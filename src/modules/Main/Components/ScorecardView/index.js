@@ -36,6 +36,7 @@ export default function ScorecardView() {
         reset(ScorecardIdState)
         reset(ScorecardTableOrientationState)
         reset(ScorecardDataLoadingState)
+        scorecardDataEngine.cancel()
         scorecardDataEngine.reset()
     })
     useEffect(() => {
@@ -51,11 +52,11 @@ export default function ScorecardView() {
 
     return (
         <Suspense fallback={<FullPageLoader/>}>
-            {loading && <Layer level={layers.blocking} translucent>
-                <CenteredContent>
-                    <CircularLoader small/>
-                </CenteredContent>
-            </Layer>}
+            {/*{loading && <Layer level={layers.blocking} translucent>*/}
+            {/*    <CenteredContent>*/}
+            {/*        <CircularLoader small/>*/}
+            {/*    </CenteredContent>*/}
+            {/*</Layer>}*/}
             <ScorecardViewHeader downloadAreaRef={downloadRef}/>
             <div ref={downloadRef} className="column p-16" style={{height: "100%", width: "100%"}}>
                 <ScorecardHeader/>
@@ -63,11 +64,11 @@ export default function ScorecardView() {
                 <HighlightedIndicatorsView/>
                 <div className="column align-items-center pt-16 flex-1">
                     {
-                        (!isEmpty(orgUnits) && !isEmpty(periods) ) ?  <Suspense fallback={<FullPageLoader/>}>
+                        (!isEmpty(orgUnits) && !isEmpty(periods)) ? <Suspense fallback={<FullPageLoader/>}>
                             <ScorecardTable
                                 nested={false}
                                 orgUnits={orgUnits}/>
-                        </Suspense>: <EmptyOrgUnitsOrPeriod/>
+                        </Suspense> : <EmptyOrgUnitsOrPeriod/>
                     }
                 </div>
             </div>

@@ -1,8 +1,8 @@
 import {Fn} from "@iapps/function-analytics";
 import {Period} from "@iapps/period-utilities";
-import mapLimit from "async/mapLimit";
+import queue from "async/queue";
 import {
-    chunk,
+    filter,
     find,
     flatten,
     forIn,
@@ -26,7 +26,15 @@ export default class ScorecardDataEngine {
     _dataEntities = {};
     _dataEntities$ = new BehaviorSubject(this._dataEntities);
     dataEntities$ = this._dataEntities$.asObservable();
-
+    q = queue((selection, callback) => {
+        this._getSingleAnalyticsData(selection)
+            .then((result) => {
+                callback(null, result);
+            })
+            .catch((error) => {
+                callback(error, null);
+            });
+    }, 5)
 
     constructor() {
         if (!ScorecardDataEngine?.instance) {
@@ -106,6 +114,7 @@ export default class ScorecardDataEngine {
     }
 
     load() {
+        console.log(this._dataEntities)
         if (this._canLoadData) {
             this._loading$.next(true)
             this._getScorecardData({
@@ -325,8 +334,11 @@ export default class ScorecardDataEngine {
         );
     }
 
+    cancel() {
+        this.q.kill()
+    }
     reset() {
-        //TODO: Implement reset function
+        this._dataEntities = {}
     }
 
     _getScorecardData(selections) {
@@ -346,7 +358,26 @@ export default class ScorecardDataEngine {
         });
     }
 
+
+    _getSingleAnalyticsData(selection) {
+        const {ou, pe, dx} = selection ?? {}
+
+        if (isEmpty(filter(Object.keys(this._dataEntities), (val) => val.match(RegExp(ou))))) {
+            return new Fn.Analytics()
+                .setOrgUnit([ou]?.join(";"))
+                .setPeriod(pe?.join(";"))
+                .setData(dx?.map(({id})=>id)?.join(";"))
+                .postProcess((analytics) => {
+                    this._updateDataEntities(analytics?.rows);
+                })
+                .get();
+        }
+
+        return new Promise((resolve => resolve()))
+    }
+
     _getAnalyticsData(selections) {
+
         let dx = [];
         let ou = [];
         let pe = [];
@@ -354,7 +385,6 @@ export default class ScorecardDataEngine {
         (selections || []).forEach((selection) => {
             const availableData =
                 this._dataEntities[`${selection.dx}_${selection.ou}_${selection.pe}`];
-
             if (!availableData) {
                 dx = [...dx, selection.dx];
                 ou = [...ou, selection.ou];
@@ -381,45 +411,16 @@ export default class ScorecardDataEngine {
     }
 
     _getNormalScorecardData(selections) {
-        const {selectedOrgUnits, selectedPeriods, selectedDataItems} = selections;
+        const {selectedOrgUnits, selectedPeriods, selectedDataItems} = selections ?? {};
 
-        let selectionList = [];
+        const selectionList = selectedOrgUnits.map((id) => ({
+            ou: id,
+            dx: selectedDataItems,
+            pe: selectedPeriods
+        }))
 
-        selectedOrgUnits.forEach((orgUnit) => {
-            const dataItemList = chunk(
-                selectedDataItems.map((dataItem) => {
-                    return selectedPeriods.map((period) => {
-                        return {
-                            dx: dataItem.id,
-                            ou: orgUnit,
-                            pe: period,
-                        };
-                    });
-                }),
-                2
-            );
-
-            dataItemList.forEach((selectedDataList) => {
-                selectionList = [...selectionList, flatten(selectedDataList)];
-            });
-        });
-
-        mapLimit(
-            selectionList,
-            10,
-            (selection, callback) => {
-                this._getAnalyticsData(selection)
-                    .then((result) => {
-                        callback(null, result);
-                    })
-                    .catch((error) => {
-                        callback(error, null);
-                    });
-            },
-            (totalErr, totalRes) => {
-                this._loading$.next(false)
-            }
-        );
+        this.q.push(selectionList)
+        this.q.drain(() => this._loading$.next(false))
     }
 
     _getCustomScorecardData(selections) {
