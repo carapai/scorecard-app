@@ -12,13 +12,15 @@ export default function DataContainer({dataSources, orgUnit, period}) {
     const {id: periodId} = period ?? {}
 
     const [analysisOpen, setAnalysisOpen] = useState(false);
-    const [topData, setTopData] = useState();
-    const [bottomData, setBottomData] = useState();
+    const [topData, setTopData] = useState({
+        loading: true
+    });
+    const [bottomData, setBottomData] = useState({
+        loading: true
+    });
     const [top, bottom] = dataSources ?? [];
     const {color: topColor} = getLegend(topData?.current, top?.legends) ?? {};
     const {color: bottomColor} = getLegend(bottomData?.current, bottom?.legends) ?? {};
-
-    const loading = false
 
     const topKey = `${top.id}_${orgUnitId}_${periodId}`
     const bottomKey = `${bottom?.id}_${orgUnitId}_${periodId}`
@@ -44,7 +46,7 @@ export default function DataContainer({dataSources, orgUnit, period}) {
         }
         }>
             {
-                loading ? <LoadingCell/> : dataSources?.length > 1 ? (
+                (topData?.loading || bottomData?.loading) ? <LoadingCell/> : dataSources?.length > 1 ? (
                     <LinkedDataCell bottomData={bottomData} topData={topData} bottomColor={bottomColor}
                                     topColor={topColor}/>
                 ) : (

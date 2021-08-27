@@ -62,7 +62,12 @@ const defaultValue = {
     highlightedIndicators: []
 }
 
-const scorecardDataEngine = new ScorecardDataEngine()
+let scorecardDataEngine = new ScorecardDataEngine()
+
+const resetScorecardEngine = ()=>{
+    scorecardDataEngine = new ScorecardDataEngine()
+}
+
 
 const ScorecardIdState = atom({
     key: 'scorecard-id',
@@ -352,35 +357,7 @@ const ScorecardDataSourceState = selector({
 
 const ScorecardDataLoadingState = atom({
     key: 'data-loading-state',
-    default: true,
-    effects_UNSTABLE: [
-        ({trigger, setSelf}) => {
-            if (trigger === 'get') {
-                setSelf(true)
-                const subscription = scorecardDataEngine.loading$.subscribe(setSelf)
-                return () => {
-                    if (subscription) {
-                        subscription.unsubscribe();
-                    }
-                }
-            }
-        }
-    ]
-})
-
-const ScorecardTableOverallAverage = atomFamily({
-    key: 'scorecard-table-overall-average',
-    default: null,
-    effects_UNSTABLE: (orgUnits) => [
-        ({setSelf}) => {
-            const subscription = scorecardDataEngine.getOverallAverage(orgUnits).subscribe(setSelf)
-            return () => {
-                if (subscription) {
-                    subscription.unsubscribe()
-                }
-            }
-        }
-    ]
+    default: true
 })
 
 
@@ -402,5 +379,5 @@ export {
     ScorecardTableSortState,
     ScorecardDataSourceState,
     ScorecardDataLoadingState,
-    ScorecardTableOverallAverage
+    resetScorecardEngine
 }

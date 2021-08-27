@@ -1,10 +1,10 @@
-import {CenteredContent, CircularLoader, Layer, layers} from '@dhis2/ui'
 import {isEmpty} from 'lodash'
 import React, {Suspense, useEffect, useRef} from "react";
 import {useParams} from "react-router-dom";
 import {useRecoilCallback, useRecoilValue, useSetRecoilState} from "recoil";
 import {PeriodResolverState} from "../../../../core/state/period";
 import {
+    resetScorecardEngine,
     scorecardDataEngine,
     ScorecardDataLoadingState,
     ScorecardIdState,
@@ -19,17 +19,22 @@ import HighlightedIndicatorsView from "./Components/HighlightedIndicatorsView";
 import ScorecardHeader from "./Components/ScorecardHeader";
 import ScorecardLegendsView from "./Components/ScorecardLegendsView";
 import ScorecardTable from "./Components/ScorecardTable";
+import TableLoader from "./Components/ScorecardTable/Components/TableLoader";
 import ScorecardViewHeader from "./Components/ScorecardViewHeader";
 
 
 export default function ScorecardView() {
     const {id: scorecardId} = useParams();
-    const setScorecardIdState = useSetRecoilState(ScorecardIdState);
     const {orgUnits} = useRecoilValue(ScorecardViewState("orgUnitSelection"));
     const {read: access} = useRecoilValue(UserAuthorityOnScorecard(scorecardId))
-    const loading = useRecoilValue(ScorecardDataLoadingState)
+    const setLoading = useSetRecoilState(ScorecardDataLoadingState)
     const downloadRef = useRef()
     const periods = useRecoilValue(PeriodResolverState)
+
+    const set = useRecoilCallback(({set}) => () => {
+        set(ScorecardIdState, scorecardId)
+        resetScorecardEngine()
+    })
 
     const reset = useRecoilCallback(({reset}) => () => {
         reset(ScorecardViewState("orgUnitSelection"))
@@ -38,8 +43,18 @@ export default function ScorecardView() {
         reset(ScorecardDataLoadingState)
         scorecardDataEngine.reset()
     })
+
     useEffect(() => {
-        setScorecardIdState(scorecardId);
+        const subscription = scorecardDataEngine.loading$.subscribe(setLoading)
+        return () => {
+            if (subscription) {
+                subscription.unsubscribe();
+            }
+        }
+    }, [setLoading])
+
+    useEffect(() => {
+        set()
         return () => {
             reset()
         };
@@ -51,11 +66,6 @@ export default function ScorecardView() {
 
     return (
         <Suspense fallback={<FullPageLoader/>}>
-            {loading && <Layer level={layers.blocking} translucent>
-                <CenteredContent>
-                    <CircularLoader small/>
-                </CenteredContent>
-            </Layer>}
             <ScorecardViewHeader downloadAreaRef={downloadRef}/>
             <div ref={downloadRef} className="column p-16" style={{height: "100%", width: "100%"}}>
                 <ScorecardHeader/>
@@ -63,11 +73,12 @@ export default function ScorecardView() {
                 <HighlightedIndicatorsView/>
                 <div className="column align-items-center pt-16 flex-1">
                     {
-                        (!isEmpty(orgUnits) && !isEmpty(periods) ) ?  <Suspense fallback={<FullPageLoader/>}>
-                            <ScorecardTable
-                                nested={false}
-                                orgUnits={orgUnits}/>
-                        </Suspense>: <EmptyOrgUnitsOrPeriod/>
+                        (!isEmpty(orgUnits) && !isEmpty(periods)) ?
+                            <Suspense fallback={<TableLoader orgUnits={orgUnits}/>}>
+                                <ScorecardTable
+                                    nested={false}
+                                    orgUnits={orgUnits}/>
+                            </Suspense> : <EmptyOrgUnitsOrPeriod/>
                     }
                 </div>
             </div>

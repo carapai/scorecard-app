@@ -26,9 +26,10 @@ export default class ScorecardDataEngine {
     _dataEntities = {};
     _dataEntities$ = new BehaviorSubject(this._dataEntities);
     dataEntities$ = this._dataEntities$.asObservable();
-
+    _cancelled = false
 
     constructor() {
+        this._cancelled = false
         if (!ScorecardDataEngine?.instance) {
             ScorecardDataEngine.instance = this;
         }
@@ -107,6 +108,7 @@ export default class ScorecardDataEngine {
 
     load() {
         if (this._canLoadData) {
+            this._cancelled = false
             this._loading$.next(true)
             this._getScorecardData({
                 selectedOrgUnits: this._selectedOrgUnits.map((orgUnit) => orgUnit?.id),
@@ -126,7 +128,7 @@ export default class ScorecardDataEngine {
     }
 
     isDataSourcesRowEmpty(dataSources = []) {
-        return this.dataEntities$.pipe(
+        return this.dataEntities$.pipe(take(1),
             map((dataEntities) => {
                 const orgUnitsData = pickBy(dataEntities, (_, key) => key.match(RegExp(head(dataSources))) || key.match(RegExp(last(dataSources))))
                 return isEmpty(orgUnitsData)
@@ -225,7 +227,7 @@ export default class ScorecardDataEngine {
     }
 
     getOrgUnitAverage(orgUnitId = '') {
-        return this.dataEntities$.pipe(
+        return this.dataEntities$.pipe(take(1),
             map((dataEntities) => {
                 const orgUnitsData = pickBy(dataEntities, (val, key) => key.match(RegExp(orgUnitId)))
                 const noOfOrgUnits = Object.keys(orgUnitsData).length
@@ -237,7 +239,7 @@ export default class ScorecardDataEngine {
     }
 
     getDataSourceAverage(dataSources = []) {
-        return this.dataEntities$.pipe(
+        return this.dataEntities$.pipe(take(1),
             map((dataEntities) => {
                 const dataSourcesData = pickBy(dataEntities, (_, key) => key.match(RegExp(head(dataSources))) || key.match(RegExp(last(dataSources))))
                 const noOfDataSources = Object.keys(dataSourcesData).length;
@@ -249,7 +251,7 @@ export default class ScorecardDataEngine {
     }
 
     getOrgUnitColumnAverage({period, orgUnit}) {
-        return this.dataEntities$.pipe(
+        return this.dataEntities$.pipe(take(1),
             map((dataEntities) => {
                 const orgUnitsData = pickBy(dataEntities, (val, key) => {
                     const [, ou, pe] = key.split('_')
@@ -264,7 +266,7 @@ export default class ScorecardDataEngine {
     }
 
     getDataSourceColumnAverage({period, dataSources, orgUnits}) {
-        return this.dataEntities$.pipe(
+        return this.dataEntities$.pipe(take(1),
             map((dataEntities) => {
                 const dataSourcesData = pickBy(dataEntities, (val, key) => {
                     const [dx, ou, pe] = key.split('_')
@@ -296,7 +298,7 @@ export default class ScorecardDataEngine {
     }
 
     getAllOrgUnitData(orgUnits) {
-        return this.dataEntities$.pipe(
+        return this.dataEntities$.pipe(take(1),
             map((dataEntities) => {
                 return pickBy(dataEntities, (value, key) => {
                     const [, ou,] = key.split('_')
@@ -326,7 +328,9 @@ export default class ScorecardDataEngine {
     }
 
     reset() {
-        //TODO: Implement reset function
+        this._dataEntities = {}
+        this._dataEntities$.next(this._dataEntities);
+        this._cancelled = true
     }
 
     _getScorecardData(selections) {
@@ -347,37 +351,37 @@ export default class ScorecardDataEngine {
     }
 
     _getAnalyticsData(selections) {
-        let dx = [];
-        let ou = [];
-        let pe = [];
+        if (!this._cancelled) {
+            let dx = [];
+            let ou = [];
+            let pe = [];
 
-        (selections || []).forEach((selection) => {
-            const availableData =
-                this._dataEntities[`${selection.dx}_${selection.ou}_${selection.pe}`];
+            (selections || []).forEach((selection) => {
+                const availableData =
+                    this._dataEntities[`${selection.dx}_${selection.ou}_${selection.pe}`];
 
-            if (!availableData) {
-                dx = [...dx, selection.dx];
-                ou = [...ou, selection.ou];
-                pe = [...pe, selection.pe];
+                if (!availableData) {
+                    dx = [...dx, selection.dx];
+                    ou = [...ou, selection.ou];
+                    pe = [...pe, selection.pe];
+                }
+            });
+
+            dx = uniq(dx);
+            ou = uniq(ou);
+            pe = uniq(pe);
+
+            if (dx?.length === 0 && ou?.length === 0 && pe?.length === 0) {
+                return of(null).toPromise();
             }
-        });
-
-        dx = uniq(dx);
-        ou = uniq(ou);
-        pe = uniq(pe);
-
-        if (dx?.length === 0 && ou?.length === 0 && pe?.length === 0) {
-            return of(null).toPromise();
+            console.log({ou, pe, dx})
+            return new Fn.Analytics()
+                .setOrgUnit(ou?.join(";"))
+                .setPeriod(pe?.join(";"))
+                .setData(dx.join(";"))
+                .get();
         }
-
-        return new Fn.Analytics()
-            .setOrgUnit(ou?.join(";"))
-            .setPeriod(pe?.join(";"))
-            .setData(dx.join(";"))
-            .postProcess((analytics) => {
-                this._updateDataEntities(analytics?.rows);
-            })
-            .get();
+        return of(null).toPromise();
     }
 
     _getNormalScorecardData(selections) {
@@ -398,7 +402,6 @@ export default class ScorecardDataEngine {
                 }),
                 2
             );
-
             dataItemList.forEach((selectedDataList) => {
                 selectionList = [...selectionList, flatten(selectedDataList)];
             });
@@ -409,14 +412,16 @@ export default class ScorecardDataEngine {
             10,
             (selection, callback) => {
                 this._getAnalyticsData(selection)
-                    .then((result) => {
-                        callback(null, result);
+                    .then((analytics) => {
+                        this._updateDataEntities(analytics?.rows);
+                        callback(null, analytics);
                     })
                     .catch((error) => {
                         callback(error, null);
+                        console.log(error)
                     });
             },
-            (totalErr, totalRes) => {
+            () => {
                 this._loading$.next(false)
             }
         );

@@ -26,7 +26,7 @@ export default function ScorecardTableBody({orgUnits}) {
     const {averageRow} = useRecoilValue(ScorecardViewState("options")) ?? {};
     const filteredDataHolders = useRecoilValue(ScorecardDataSourceState)
     const loading = useRecoilValue(ScorecardDataLoadingState)
-    const periods = useRecoilValue(PeriodResolverState) ?? [];
+    const periods = useRecoilValue(PeriodResolverState);
     const {periodType} = useRecoilValue(ScorecardViewState("periodSelection"));
     const {childrenOrgUnits, filteredOrgUnits} = useRecoilValue(ScorecardOrgUnitState(orgUnits))
 
@@ -34,8 +34,14 @@ export default function ScorecardTableBody({orgUnits}) {
 
     useEffect(() => {
         if (loading !== undefined && !loading) {
-            scorecardDataEngine.getOverallAverage([...childrenOrgUnits, ...filteredOrgUnits]?.map(({id}) => id)).subscribe(setOverallAverage)
+            const subscription = scorecardDataEngine.getOverallAverage([...childrenOrgUnits, ...filteredOrgUnits]?.map(({id}) => id)).subscribe(setOverallAverage)
+
+            return () => {
+                subscription.unsubscribe()
+            }
         }
+
+
     }, [childrenOrgUnits, filteredOrgUnits, loading])
 
     useEffect(() => {
@@ -53,8 +59,7 @@ export default function ScorecardTableBody({orgUnits}) {
                 .setPeriodType(periodType)
                 .load();
         }
-    }, [dataGroups, filteredOrgUnits, childrenOrgUnits, periodType, periods]);
-
+    }, [dataGroups, filteredOrgUnits, childrenOrgUnits, periodType, periods, orgUnits.length]);
 
     return (
         <DataTableBody>
@@ -89,7 +94,7 @@ export default function ScorecardTableBody({orgUnits}) {
                         averageRow && (
                             tableOrientation === Orientation.ORG_UNIT_VS_DATA ?
                                 <AverageDataSourceRow orgUnits={orgUnits} overallAverage={overallAverage}/> :
-                                <AverageOrgUnitRow orgUnits={orgUnits} overallAverage={overallAverage} />
+                                <AverageOrgUnitRow orgUnits={orgUnits} overallAverage={overallAverage}/>
 
                         )
                     }
@@ -99,6 +104,7 @@ export default function ScorecardTableBody({orgUnits}) {
         </DataTableBody>
     )
 }
+
 
 ScorecardTableBody.propTypes = {
     orgUnits: PropTypes.arrayOf(PropTypes.object).isRequired
