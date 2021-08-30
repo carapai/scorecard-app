@@ -5,19 +5,18 @@ import {useRecoilValue} from "recoil";
 import {DownloadTypes} from "../../../../../../../core/constants/download";
 import {PeriodResolverState} from "../../../../../../../core/state/period";
 import {
-    scorecardDataEngine,
     ScorecardDataLoadingState,
     ScorecardDataSourceState,
-    ScorecardOrgUnitState,
     ScorecardViewState
 } from "../../../../../../../core/state/scorecard";
+import useTableOrgUnits from "../../ScorecardTable/hooks/useTableOrgUnits";
 import {downloadALMAData, downloadALMAMeta, downloadCSV, downloadExcel} from "../services/download";
 
 
-export default function useDownload(downloadRef) {
+export default function useDownload(downloadRef, dataEngine) {
     const title = useRecoilValue(ScorecardViewState('title'))
     const {orgUnits} = useRecoilValue(ScorecardViewState('orgUnitSelection'))
-    const {filteredOrgUnits, childrenOrgUnits} = useRecoilValue(ScorecardOrgUnitState(orgUnits))
+    const {filteredOrgUnits, childrenOrgUnits} = useTableOrgUnits({dataEngine, orgUnits})
     const dataHolders = useRecoilValue(ScorecardDataSourceState)
     const allOrgUnits = useMemo(() => [...filteredOrgUnits, ...childrenOrgUnits], [filteredOrgUnits, childrenOrgUnits]);
     const periods = useRecoilValue(PeriodResolverState)
@@ -29,10 +28,10 @@ export default function useDownload(downloadRef) {
     })
 
     function subscribe() {
-        if (loading !== undefined && !loading) {
-            const subscription = scorecardDataEngine.getAllOrgUnitData(allOrgUnits?.map(({id}) => id)).subscribe(setData);
-            return () => subscription.unsubscribe();
-        }
+        // if (loading !== undefined && !loading) {
+        //     const subscription = dataEngine.getAllOrgUnitData(allOrgUnits?.map(({id}) => id)).subscribe(setData);
+        //     return () => subscription.unsubscribe();
+        // }
     }
 
     useEffect(subscribe, [loading, allOrgUnits])

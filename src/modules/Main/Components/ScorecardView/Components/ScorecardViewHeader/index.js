@@ -1,5 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 import {Button, ButtonStrip, Card} from '@dhis2/ui'
+import PropTypes from 'prop-types'
 import React, {useEffect, useRef, useState} from 'react'
 import {useHistory} from "react-router-dom";
 import {useRecoilCallback, useRecoilState, useRecoilValue} from "recoil";
@@ -25,7 +26,7 @@ export default function ScorecardViewHeader({downloadAreaRef}) {
     const [periodSelectionOpen, setPeriodSelectionOpen] = useState(false);
     const [optionsOpen, setOptionsOpen] = useState(false);
     const [downloadOpen, setDownloadOpen] = useState(false);
-    const {download: onDownload} = useDownload(downloadAreaRef);
+    const {download: onDownload} = useDownload(downloadAreaRef, {});
 
     const downloadRef = useRef()
     const reset = useRecoilCallback(({reset}) => () => {
@@ -108,3 +109,8 @@ export default function ScorecardViewHeader({downloadAreaRef}) {
         </div>
     )
 }
+
+ScorecardViewHeader.propTypes = {
+    downloadAreaRef: PropTypes.any.isRequired
+};
+

@@ -4,17 +4,18 @@ import PropTypes from 'prop-types'
 import React from "react";
 import {useRecoilState, useRecoilValue} from "recoil";
 import {Orientation} from "../../../../../../../../../core/constants/orientation";
+import ScorecardDataEngine from "../../../../../../../../../core/models/scorecardData";
 import {PeriodResolverState} from "../../../../../../../../../core/state/period";
 import {
-    ScorecardOrgUnitState,
     ScorecardTableOrientationState,
     ScorecardTableSortState,
     ScorecardViewState
 } from "../../../../../../../../../core/state/scorecard";
+import useTableOrgUnits from "../../../hooks/useTableOrgUnits";
 
-export default function PeriodHeaderRow({orgUnits}) {
+export default function PeriodHeaderRow({orgUnits, dataEngine}) {
     const {dataGroups} = useRecoilValue(ScorecardViewState('dataSelection')) ?? {}
-    const {filteredOrgUnits, childrenOrgUnits} = useRecoilValue(ScorecardOrgUnitState(orgUnits)) ?? {}
+    const {filteredOrgUnits, childrenOrgUnits} = useTableOrgUnits({dataEngine, orgUnits})
     const orientation = useRecoilValue(ScorecardTableOrientationState)
     const periods = useRecoilValue(PeriodResolverState) ?? []
     const [{name: sortName, direction}, setDataSort] = useRecoilState(ScorecardTableSortState)
@@ -74,6 +75,7 @@ export default function PeriodHeaderRow({orgUnits}) {
 }
 
 PeriodHeaderRow.propTypes = {
+    dataEngine: PropTypes.instanceOf(ScorecardDataEngine).isRequired,
     orgUnits: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

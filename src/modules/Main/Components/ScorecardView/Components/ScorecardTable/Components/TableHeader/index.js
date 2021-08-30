@@ -2,6 +2,7 @@ import {DataTableHead} from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React, {useMemo} from 'react'
 import {useRecoilValue} from "recoil";
+import ScorecardDataEngine from "../../../../../../../../core/models/scorecardData";
 import {ScorecardTableConfigState} from "../../../../../../../../core/state/scorecard";
 import GroupsHeaderRow from "./Components/GroupsHeaderRow";
 import HoldersHeaderRow from "./Components/HoldersHeaderRow";
@@ -25,7 +26,7 @@ function getHeaderRow(type) {
 }
 
 
-export default function TableHeader({orgUnits, nested}) {
+export default function TableHeader({orgUnits, nested, dataEngine}) {
     const {columns} = useRecoilValue(ScorecardTableConfigState(orgUnits))
     const headerRows = useMemo(() => columns?.map(getHeaderRow), [columns])
 
@@ -33,7 +34,7 @@ export default function TableHeader({orgUnits, nested}) {
         <DataTableHead>
             {
                 headerRows?.map((Row, i) => (
-                    <Row  orgUnits={orgUnits} nested={nested} key={`${columns[i]}-header-row`}/>
+                    <Row dataEngine={dataEngine} orgUnits={orgUnits} nested={nested} key={`${columns[i]}-header-row`}/>
                 ))
             }
         </DataTableHead>
@@ -41,6 +42,7 @@ export default function TableHeader({orgUnits, nested}) {
 }
 
 TableHeader.propTypes = {
+    dataEngine: PropTypes.instanceOf(ScorecardDataEngine).isRequired,
     nested: PropTypes.bool.isRequired,
     orgUnits: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

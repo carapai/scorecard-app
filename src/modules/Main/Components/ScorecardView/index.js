@@ -5,7 +5,6 @@ import {useParams} from "react-router-dom";
 import {useRecoilCallback, useRecoilValue, useSetRecoilState} from "recoil";
 import {PeriodResolverState} from "../../../../core/state/period";
 import {
-    scorecardDataEngine,
     ScorecardDataLoadingState,
     ScorecardIdState,
     ScorecardTableOrientationState,
@@ -39,7 +38,6 @@ export default function ScorecardView() {
         reset(ScorecardIdState)
         reset(ScorecardTableOrientationState)
         reset(ScorecardDataLoadingState)
-        scorecardDataEngine.reset()
     })
 
     useEffect(() => {

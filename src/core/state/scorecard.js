@@ -62,8 +62,6 @@ const defaultValue = {
     highlightedIndicators: []
 }
 
-const scorecardDataEngine = new ScorecardDataEngine()
-
 const ScorecardIdState = atom({
     key: 'scorecard-id',
     default: null
@@ -240,13 +238,15 @@ const ScorecardOrgUnitState = selectorFamily({
         const dataSort = get(ScorecardTableSortState)
         const periods = get(PeriodResolverState)
         const orientation = get(ScorecardTableOrientationState)
+        const dataEngine = get(ScorecardTableDataEngine(orgUnits))
+
 
         let orgUnitSort = []
         if (dataSort) {
             if (orientation === Orientation.ORG_UNIT_VS_DATA) {
                 if (dataSort.type === 'period') {
                     const [dx, pe] = dataSort.name?.split('-');
-                    scorecardDataEngine.sortOrgUnitsByDataAndPeriod({
+                    dataEngine.sortOrgUnitsByDataAndPeriod({
                         dataSource: dx,
                         period: pe,
                         sortType: dataSort?.direction
@@ -254,7 +254,7 @@ const ScorecardOrgUnitState = selectorFamily({
                 }
                 if (dataSort.type === 'data') {
                     const dx = dataSort?.name;
-                    scorecardDataEngine.sortOrgUnitsByData({
+                    dataEngine.sortOrgUnitsByData({
                         dataSource: dx,
                         periods: periods?.map(({id}) => id),
                         sortType: dataSort?.direction
@@ -302,6 +302,7 @@ const ScorecardOrgUnitState = selectorFamily({
 const ScorecardDataSourceState = selector({
     key: 'data-source-state',
     get: ({get}) => {
+        const {orgUnits} = get(ScorecardViewState('orgUnitSelection'))
         const {dataGroups} = get(ScorecardViewState("dataSelection")) ?? {};
         const dataSearchKeyword = get(ScorecardViewState('dataSearchKeyword'))
         const {data: sort} = get(ScorecardViewState('tableSort'))
@@ -309,6 +310,7 @@ const ScorecardDataSourceState = selector({
         const dataSort = get(ScorecardTableSortState)
         const periods = get(PeriodResolverState)
         const orientation = get(ScorecardTableOrientationState)
+        const dataEngine = get(ScorecardTableDataEngine(orgUnits))
         let filteredResult = dataHolders;
         if (!isEmpty(dataSearchKeyword)) {
             filteredResult = filter(dataHolders, (value) => {
@@ -323,7 +325,7 @@ const ScorecardDataSourceState = selector({
         if (!isEmpty(dataSort)) {
             if (orientation === Orientation.DATA_VS_ORG_UNIT) {
                 if (dataSort.type === 'orgUnit') {
-                    scorecardDataEngine.sortDataSourceByOrgUnit({
+                    dataEngine.sortDataSourceByOrgUnit({
                         periods: periods?.map(({id}) => id),
                         orgUnit: dataSort?.name,
                         sortType: dataSort?.direction
@@ -331,7 +333,7 @@ const ScorecardDataSourceState = selector({
                 }
                 if (dataSort.type === 'period') {
                     const [ou, pe] = dataSort.name.split('-')
-                    scorecardDataEngine.sortDataSourceByOrgUnitAndPeriod({
+                    dataEngine.sortDataSourceByOrgUnitAndPeriod({
                         period: pe,
                         orgUnit: ou,
                         sortType: dataSort?.direction
@@ -352,35 +354,36 @@ const ScorecardDataSourceState = selector({
 
 const ScorecardDataLoadingState = atom({
     key: 'data-loading-state',
-    default: true,
-    effects_UNSTABLE: [
-        ({trigger, setSelf}) => {
-            if (trigger === 'get') {
-                setSelf(true)
-                const subscription = scorecardDataEngine.loading$.subscribe(setSelf)
-                return () => {
-                    if (subscription) {
-                        subscription.unsubscribe();
-                    }
-                }
-            }
-        }
-    ]
+    default: false,
 })
 
 const ScorecardTableOverallAverage = atomFamily({
     key: 'scorecard-table-overall-average',
-    default: null,
-    effects_UNSTABLE: (orgUnits) => [
-        ({setSelf}) => {
-            const subscription = scorecardDataEngine.getOverallAverage(orgUnits).subscribe(setSelf)
-            return () => {
-                if (subscription) {
-                    subscription.unsubscribe()
-                }
-            }
+    default: 0,
+
+})
+
+const ScorecardTableDataEngine = atomFamily({
+    key: 'scorecard-table-data-engine',
+    default: selectorFamily({
+        key: 'scorecard-data-engine-default',
+        get: (orgUnits) => ({get}) => {
+            const dataEngine = new ScorecardDataEngine()
+            const {dataGroups} = get(ScorecardViewState("dataSelection"))
+            const {periodType} = get(ScorecardViewState("periodSelection"))
+            const periods = get(PeriodResolverState)
+            dataEngine
+                .setDataGroups(dataGroups)
+                .setPeriods(periods)
+                .setOrgUnits([
+                    ...orgUnits
+                ])
+                .setPeriodType(periodType)
+                .load();
+
+            return dataEngine;
         }
-    ]
+    })
 })
 
 
@@ -392,7 +395,6 @@ export {
     ScorecardSummaryState,
     ScorecardViewState,
     ScorecardRequestId,
-    scorecardDataEngine,
     ScorecardConfigDirtySelector,
     ScorecardConfigErrorSelector,
     ScorecardConfigErrorState,
@@ -402,5 +404,6 @@ export {
     ScorecardTableSortState,
     ScorecardDataSourceState,
     ScorecardDataLoadingState,
-    ScorecardTableOverallAverage
+    ScorecardTableOverallAverage,
+    ScorecardTableDataEngine
 }

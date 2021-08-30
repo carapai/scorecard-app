@@ -6,19 +6,21 @@ import React, {useEffect, useRef, useState} from "react";
 import {useRecoilState, useRecoilValue} from "recoil";
 import {DraggableItems} from "../../../../../../../../../core/constants/draggables";
 import {ScorecardTableConstants} from "../../../../../../../../../core/constants/table";
+import ScorecardDataEngine from "../../../../../../../../../core/models/scorecardData";
 import {PeriodResolverState} from "../../../../../../../../../core/state/period";
 import {
-    ScorecardOrgUnitState, ScorecardTableConfigState,
+    ScorecardTableConfigState,
     ScorecardTableSortState,
     ScorecardViewState
 } from "../../../../../../../../../core/state/scorecard";
+import useTableOrgUnits from "../../../hooks/useTableOrgUnits";
 import DraggableCell from "../../TableBody/Components/DraggableCell";
 import DroppableCell from "../../TableBody/Components/DroppableCell";
 
 
-export default function OrgUnitHeaderRow({orgUnits, nested}) {
+export default function OrgUnitHeaderRow({orgUnits, nested, dataEngine}) {
     const {averageColumn} = useRecoilValue(ScorecardViewState('options'))
-    const {filteredOrgUnits, childrenOrgUnits} = useRecoilValue(ScorecardOrgUnitState(orgUnits))
+    const {filteredOrgUnits, childrenOrgUnits} = useTableOrgUnits({dataEngine, orgUnits})
     const periods = useRecoilValue(PeriodResolverState) ?? []
     const [dataKeyword, setDataKeyword] = useRecoilState(ScorecardViewState('dataSearchKeyword'))
     const [searchValue, setSearchValue] = useState(dataKeyword);
@@ -49,8 +51,9 @@ export default function OrgUnitHeaderRow({orgUnits, nested}) {
                                    width={nameColumnWidth} bordered
                                    className='scorecard-table-header scorecard-org-unit-cell' rowSpan={"2"}>
                 {
-                    !nested && <InputField className='print-hide' value={searchValue} onChange={({value}) => setSearchValue(value)}
-                                           placeholder={i18n.t('Search Data')}/>
+                    !nested &&
+                    <InputField className='print-hide' value={searchValue} onChange={({value}) => setSearchValue(value)}
+                                placeholder={i18n.t('Search Data')}/>
                 }
                 <h3 className='print-show hide'>{i18n.t('Data')}</h3>
             </DataTableColumnHeader>
@@ -74,7 +77,8 @@ export default function OrgUnitHeaderRow({orgUnits, nested}) {
             }
             {
                 averageColumn &&
-                <DataTableCell width={`${ScorecardTableConstants.CELL_WIDTH}px`}   fixed align='center' bordered className='scorecard-table-header' rowSpan={"2"}>
+                <DataTableCell width={`${ScorecardTableConstants.CELL_WIDTH}px`} fixed align='center' bordered
+                               className='scorecard-table-header' rowSpan={"2"}>
                     {i18n.t('Average')}
                 </DataTableCell>
             }
@@ -83,6 +87,7 @@ export default function OrgUnitHeaderRow({orgUnits, nested}) {
 }
 
 OrgUnitHeaderRow.propTypes = {
+    dataEngine: PropTypes.instanceOf(ScorecardDataEngine).isRequired,
     nested: PropTypes.bool.isRequired,
     orgUnits: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
