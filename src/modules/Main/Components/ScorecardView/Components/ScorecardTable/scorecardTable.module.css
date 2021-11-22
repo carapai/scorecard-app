@@ -78,7 +78,16 @@
         border-bottom: 1px solid #D5DDE5 !important;
         border-right: none !important;
     }
+
+    .period-header-cell > span > span > button {
+        display: none !important;
+    }
+
     .child-table-row td:first-child > svg {
+        display: none;
+    }
+
+    [data-test="dhis2-uicore-tableheadercellaction"] {
         display: none;
     }
 
