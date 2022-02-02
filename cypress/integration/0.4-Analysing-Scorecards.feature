@@ -12,15 +12,21 @@ Feature: Display Indicators
     When opening a list of available scorecards
     And  selecting to view one of the scorecards
     And selecting a lower level locations
-# Then a table of indicators against selected lower level locations should be displayed
+    Then a table of indicators against selected lower level locations should be displayed
 
-  @focus
+
   Scenario: Visualize Scorecards without empty rows
     Given authorized data officer
     When opening a list of available scorecards
     And selecting to view one of the scorecards
     And deselecting view of the empty rows
     Then a table of indicators against locations should be displayed without empty rows
+  @focus
+  Scenario: Visualize Scorecards
+    Given authorized data officer
+    When opening a list of available scorecards
+    And selecting to view one of the scorecards
+    Then a table of indicators against locations should be displayed
 
   @focus
   Scenario: visualize Scorecards with Hierarchy
@@ -78,6 +84,15 @@ Feature: Display Indicators
     And selecting to view legend
     Then legend should be displayed
 
+  @focus
+  Scenario: Visualize 3 Best Locations Based on Selected Indicator
+  Given authorized data Officer
+  When opening a list of available scorecards
+  And selecting to view one of the scorecards
+  And selecting an indicator column
+  And selecting to view 3 best locations
+  Then a table of 3 best locations should be displayed
+
 
   Scenario: Visualize 5 Best Location Based on Selected Indicator
     Given authorized data officer
@@ -121,6 +136,24 @@ Feature: Display Indicators
     And selecting a specific indicator value
     And selecting to view chart
     Then chart of selected indicator for selected location and period should be displayed
+
+  @focus
+  Scenario: Visualize scorecard in map
+    Given authorized Regional Manager
+    When opening a list of available scorecards
+    And selecting to view one of the scorecards
+    And selecting a specific indicator value
+    And selecting to view map
+    Then map of selected indicator for selected location and period should be displayed
+
+  @focus
+  Scenario: View Selected Indicator's Metadata
+    Given authorized M&E Officer
+    When opening a list of available scorecards
+    And selecting to view one of the scorecards
+    And selecting an indicator
+    And selecting to view indicator details
+    Then indicator details including metadata details,numerator,denominator and description
 
   @focus
   Scenario: View Selected Indicator's Metadata
@@ -219,3 +252,20 @@ Feature: Display Indicators
     And selecting to view one of the scorecards
     And selecting to view locations above  average
     Then a table of locations whose values for the selected indicator are above average should be displayed
+
+
+  @focus
+  Scenario: Filter based on location
+    Given authorized M&E Officer
+    When opening a list of available scorecards
+    And selecting to view one of the scorecards
+    And filter the indicator based on a specific location
+    Then a table of indicators against the specified location should be displayed
+
+  @focus
+  Scenario: Visualize Indicator Performance
+    Given authorized M&E Officer
+    When opening a list of available scorecards
+    And selecting to view one of the scorecards
+    Then a table of indicator against locations should be displayed
+

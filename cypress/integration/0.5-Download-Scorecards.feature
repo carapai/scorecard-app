@@ -19,7 +19,7 @@ Feature: Download Feature
     Then a Excel document of the scorecard visualization should automatically download to my computer
 
   @focus
-  Scenario: : Download Excel of Raw Data(CSV)
+  Scenario: Download Excel of Raw Data(CSV)
     Given authorized M&E Officer
     When opening a list of available scorecards
     And selecting to view one of the scorecards
@@ -27,7 +27,7 @@ Feature: Download Feature
     Then an excel file with the scorecard raw data should automatically download
 
   @focus
-  Scenario: : Download DataJson of Raw Data
+  Scenario: Download DataJson of Raw Data
     Given authorized M&E Officer
     When opening a list of available scorecards
     And selecting to view one of the scorecards
@@ -35,14 +35,13 @@ Feature: Download Feature
     Then an DataJson file with the scorecard raw data should automatically download
 
   @focus
-  Scenario: : Download Metadata of Raw Data
+  Scenario:  Download Metadata of Raw Data
     Given authorized M&E Officer
     When opening a list of available scorecards
     And selecting to view one of the scorecards
     And downloading the raw scorecard details in Metadata format
     Then an Metadata file with the scorecard raw data should automatically download
 
-# TODO
 
 
   Scenario: Download scorecard with filtered greater than 100 values

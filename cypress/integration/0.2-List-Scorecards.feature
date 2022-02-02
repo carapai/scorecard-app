@@ -18,7 +18,12 @@ Feature: List Scorecards
         When opening a list of many scorecards
         Then I should be presented with a chunked list of scorecards
         And I should be able to navigate through chunks to view more scorecards
-
+     
+     @focus
+     Scenario: Accessing scorecard empty list
+     Given authorized department officer
+     When opening a list where there are no available scorecards
+     Then I should be presented with a message "Welcome to Scorecard App"
 
 
     @focus
