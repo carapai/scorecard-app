@@ -5,7 +5,7 @@ import React, {Fragment, useEffect, useState} from "react";
 import {useRecoilValue} from "recoil";
 import {Orientation} from "../../../../../../../../core/constants/orientation";
 import ScorecardDataEngine from "../../../../../../../../core/models/scorecardData";
-import {LowestOrgUnitLevel} from "../../../../../../../../core/state/orgUnit";
+import {AnalyticsOrgUnits, LowestOrgUnitLevel} from "../../../../../../../../core/state/orgUnit";
 import {PeriodResolverState} from "../../../../../../../../core/state/period";
 import {
     ScorecardDataLoadingState,
@@ -29,11 +29,14 @@ export default function ScorecardTableBody({orgUnits, dataEngine}) {
     const {averageRow} = useRecoilValue(ScorecardViewState("options")) ?? {};
     const filteredDataHolders = useRecoilValue(ScorecardDataSourceState);
     const loading = useRecoilValue(ScorecardDataLoadingState(orgUnits));
-    const periods = useRecoilValue(PeriodResolverState) ?? [];
+    const periods = useRecoilValue(PeriodResolverState);
     const {periodType} = useRecoilValue(ScorecardViewState("periodSelection"));
     const {childrenOrgUnits, filteredOrgUnits} = useRecoilValue(
         ScorecardOrgUnitState(orgUnits)
     );
+
+
+    const analyticOrgUnits = useRecoilValue(AnalyticsOrgUnits);
     const [overallAverage, setOverallAverage] = useState();
 
     useEffect(() => {
@@ -46,6 +49,7 @@ export default function ScorecardTableBody({orgUnits, dataEngine}) {
         }
     }, [childrenOrgUnits, filteredOrgUnits, loading]);
 
+
     useEffect(() => {
         if (
             (orgUnits.length === 1 && !isEmpty(childrenOrgUnits)) ||
@@ -55,10 +59,11 @@ export default function ScorecardTableBody({orgUnits, dataEngine}) {
                 .setDataGroups(dataGroups)
                 .setPeriods(periods)
                 .setOrgUnits([...(filteredOrgUnits ?? []), ...(childrenOrgUnits ?? [])])
+                .setAnalyticsOrgUnits(analyticOrgUnits)
                 .setPeriodType(periodType)
                 .load();
         }
-    }, [dataGroups, filteredOrgUnits, childrenOrgUnits, periodType, periods]);
+    }, [dataGroups, filteredOrgUnits, childrenOrgUnits, periodType, periods, orgUnits, analyticOrgUnits, dataEngine]);
     return (
         <DataTableBody>
             {
@@ -72,22 +77,20 @@ export default function ScorecardTableBody({orgUnits, dataEngine}) {
                                     key={`${orgUnit?.id}-row`}
                                     orgUnit={orgUnit}
                                     overallAverage={overallAverage}
-                                    orgUnits={orgUnits}
                                 />
                             ))}
                             {childrenOrgUnits?.map((orgUnit, index) => {
-                                if(orgUnit.level === lowestOrgUnitLevel.level){
+                                if (orgUnit.level === lowestOrgUnitLevel.level) {
 
-                                  return (
-                                      <ParentOrgUnitRow
-                                          index={index + 1}
-                                          dataEngine={dataEngine}
-                                          key={`${orgUnit?.id}-row`}
-                                          orgUnit={orgUnit}
-                                          overallAverage={overallAverage}
-                                          orgUnits={orgUnits}
-                                      />
-                                  )
+                                    return (
+                                        <ParentOrgUnitRow
+                                            index={index + 1}
+                                            dataEngine={dataEngine}
+                                            key={`${orgUnit?.id}-row`}
+                                            orgUnit={orgUnit}
+                                            overallAverage={overallAverage}
+                                        />
+                                    )
                                 }
 
                                 return (
@@ -99,7 +102,6 @@ export default function ScorecardTableBody({orgUnits, dataEngine}) {
                                         orgUnit={orgUnit}
                                         expandedOrgUnit={expandedOrgUnit}
                                         overallAverage={overallAverage}
-                                        orgUnits={orgUnits}
                                     />
                                 )
                             })}

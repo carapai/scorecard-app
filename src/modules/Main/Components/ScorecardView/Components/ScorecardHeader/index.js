@@ -14,7 +14,7 @@ export default function ScorecardHeader() {
 
   return showTitle ? (
     <div className="row space-between" id={"scorecard-header"}>
-      <div className="row">
+      <div className="row w-100">
         {customHeader ? (
           <JsxParser
             autoCloseVoidElements

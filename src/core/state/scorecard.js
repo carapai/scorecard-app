@@ -1,6 +1,6 @@
 import i18n from "@dhis2/d2-i18n";
 import {Period} from "@iapps/period-utilities";
-import {cloneDeep, filter, get as _get, head, isEmpty, set as _set,} from "lodash";
+import {cloneDeep, filter, get as _get, head, isArray, isEmpty, set as _set,} from "lodash";
 import {atom, atomFamily, selector, selectorFamily} from "recoil";
 import {
     getColSpanDataGroups,
@@ -349,16 +349,18 @@ const ScorecardOrgUnitState = atomFamily({
         get:
             (orgUnits) =>
                 async ({get}) => {
-                    let childrenOrgUnits = [];
-                    const filteredOrgUnits = get(SelectedOrgUnits(orgUnits));
-                    if (orgUnits.length === 1) {
-                        childrenOrgUnits = get(OrgUnitChildren(head(orgUnits)));
+                    if (isArray(orgUnits)) {
+                        let childrenOrgUnits = [];
+                        const filteredOrgUnits = get(SelectedOrgUnits(orgUnits));
+                        if (orgUnits.length === 1) {
+                            childrenOrgUnits = get(OrgUnitChildren(head(orgUnits)));
+                        }
+                        return {
+                            childrenOrgUnits,
+                            filteredOrgUnits,
+                            orgUnitsCount: childrenOrgUnits?.length + filteredOrgUnits?.length,
+                        };
                     }
-                    return {
-                        childrenOrgUnits,
-                        filteredOrgUnits,
-                        orgUnitsCount: childrenOrgUnits?.length + filteredOrgUnits?.length,
-                    };
                 },
     }),
 });

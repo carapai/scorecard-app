@@ -34,6 +34,8 @@ export default class ScorecardDataEngine {
     dataEntities$ = this._dataEntities$.asObservable();
     _previousPeriods = [];
 
+    _analyticsOrgUnits = [];
+
     constructor() {
         this._cancelled = false;
     }
@@ -88,6 +90,12 @@ export default class ScorecardDataEngine {
         return this;
     }
 
+
+    setAnalyticsOrgUnits(analyticsOrgUnits) {
+        this._analyticsOrgUnits = analyticsOrgUnits;
+        return this;
+    }
+
     _updateDataEntities(rows) {
         (rows || []).forEach((row) => {
             const dataEntityId = `${row?.dx?.id}_${row?.ou?.id}_${row?.pe?.id}`;
@@ -121,7 +129,7 @@ export default class ScorecardDataEngine {
             this._progress = 0;
             this._progress$.next(this._progress);
             this._getScorecardData({
-                selectedOrgUnits: this._selectedOrgUnits.map((orgUnit) => orgUnit?.id),
+                selectedOrgUnits: this._analyticsOrgUnits,
                 selectedPeriods: this._selectedPeriods.map((period) => period?.id),
                 selectedData: this._selectedData,
             });
@@ -503,7 +511,7 @@ export default class ScorecardDataEngine {
             }
 
             return new Fn.Analytics()
-                .setOrgUnit(ou?.join(";"))
+                .setOrgUnit(this._analyticsOrgUnits?.join(";"))
                 .setPeriod(pe?.join(";"))
                 .setData(dx.join(";"))
                 .postProcess((analytics) => {

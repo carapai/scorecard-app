@@ -29,7 +29,6 @@ function SingleAverageCell({dataSources, values, bold}) {
         orgUnitLevels,
         legendDefinitions,
     }) ?? {};
-    console.log(values)
 
     if (head(values) === undefined) {
         return null;
