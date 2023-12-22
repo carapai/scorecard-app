@@ -1,41 +1,50 @@
 import i18n from "@dhis2/d2-i18n";
-import {Button, ButtonStrip, DropdownButton} from "@dhis2/ui";
+import { Button, ButtonStrip, DropdownButton } from "@dhis2/ui";
 import PropTypes from "prop-types";
-import React, {useState} from "react";
-import {useHistory} from "react-router-dom";
-import {useRecoilCallback, useRecoilState, useRecoilValue, useSetRecoilState,} from "recoil";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import {
+    useRecoilCallback,
+    useRecoilState,
+    useRecoilValue,
+    useSetRecoilState,
+} from "recoil";
 
 import DownloadMenu from "./Download/Components/DownloadMenu";
 import useDownload from "./ScorecardViewHeader/hooks/useDownload";
-import {ScorecardOptionsModal} from "../../modals";
-import {useConfig} from "@dhis2/app-runtime";
-import {APP_NAME, APP_TITLE} from "../../../constants";
+import { ScorecardOptionsModal } from "../../modals";
+import { useConfig } from "@dhis2/app-runtime";
+import { APP_NAME, APP_TITLE } from "../../../constants";
 import {
     RefreshScorecardState,
     RouterState,
     ScorecardIdState,
     ScorecardViewState,
-    UserAuthorityOnScorecard
+    UserAuthorityOnScorecard,
 } from "../../../state";
-import {constructAppUrl} from "../../../utils";
-import {ScorecardDataEngine} from "../../../models";
+import { constructAppUrl } from "../../../utils";
+import { ScorecardDataEngine } from "../../../models";
 
-export default function ScorecardActions({downloadAreaRef, dataEngine, widget}) {
+export default function ScorecardActions({
+    downloadAreaRef,
+    dataEngine,
+    widget,
+}) {
     const setRoute = useSetRecoilState(RouterState);
     const [scorecardOptions, setScorecardOptions] = useRecoilState(
         ScorecardViewState("options")
     );
     const [optionsOpen, setOptionsOpen] = useState(false);
-    const {baseUrl, serverVersion} = useConfig();
-    const {download: onDownload} = useDownload(downloadAreaRef, dataEngine);
+    const { baseUrl, serverVersion } = useConfig();
+    const { download: onDownload } = useDownload(downloadAreaRef, dataEngine);
     const scorecardId = useRecoilValue(ScorecardIdState);
     const userAuthority = useRecoilValue(UserAuthorityOnScorecard(scorecardId));
     const writeAccess = userAuthority?.write;
     const history = useHistory();
-    const onRefresh = useRecoilCallback(({set, reset}) => () => {
+    const onRefresh = useRecoilCallback(({ set, reset }) => () => {
         reset(ScorecardViewState("orgUnitSelection"));
         reset(ScorecardViewState("periodSelection"));
-        set(RefreshScorecardState, prevValue => prevValue + 1);
+        set(RefreshScorecardState, (prevValue) => prevValue + 1);
     });
 
     const onEdit = () => {
@@ -46,11 +55,15 @@ export default function ScorecardActions({downloadAreaRef, dataEngine, widget}) 
             }));
 
             if (widget) {
-                const appUrl = constructAppUrl(baseUrl, {
-                    name: APP_NAME,
-                    title: APP_TITLE
-                }, serverVersion)
-                return window.parent.open(appUrl + "#/edit/" + scorecardId)
+                const appUrl = constructAppUrl(
+                    baseUrl,
+                    {
+                        name: APP_NAME,
+                        title: APP_TITLE,
+                    },
+                    serverVersion
+                );
+                return window.parent.open(appUrl + "#/edit/" + scorecardId);
             } else {
                 history.push(`/edit/${scorecardId}`);
             }
@@ -60,9 +73,8 @@ export default function ScorecardActions({downloadAreaRef, dataEngine, widget}) 
     return (
         <div className="row end print-hide">
             <div className="column align-items-end">
-                {
-                    !widget && <ButtonStrip>
-
+                {!widget && (
+                    <ButtonStrip>
                         <Button
                             className="option-button"
                             dataTest={"scorecard-option-button"}
@@ -81,22 +93,24 @@ export default function ScorecardActions({downloadAreaRef, dataEngine, widget}) 
                         )}
                         <DropdownButton
                             component={
-                                <DownloadMenu onClose={() => {
-                                }} onDownload={onDownload}/>
+                                <DownloadMenu
+                                    onClose={() => {}}
+                                    onDownload={onDownload}
+                                />
                             }
                             className="download-button"
                             dataTest={"download-button"}
                         >
-                            {i18n.t("Download")}
+                            {i18n.t("Actions")}
                         </DropdownButton>
 
                         <Button className="refresh-button" onClick={onRefresh}>
                             {i18n.t("Refresh")}
                         </Button>
                     </ButtonStrip>
-                }
+                )}
             </div>
-            {(widget && writeAccess) ? (
+            {widget && writeAccess ? (
                 <Button
                     dataTest={"edit-scorecard-button"}
                     className="scorecard-view-edit-button"
