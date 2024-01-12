@@ -1,0 +1,16 @@
+Could not find 'nx' module in this workspace. Error: [readCachedProjectGraph] ERROR: No cached ProjectGraph is available.
+
+If you are leveraging \`readCachedProjectGraph()\` directly then you will need to refactor your usage to first ensure that
+the ProjectGraph is created by calling \`await createProjectGraphAsync()\` somewhere before attempting to read the data.
+
+If you encounter this error as part of running standard \`nx\` commands then please open an issue on https://github.com/nrwl/nx
+    at readCachedProjectGraph (/Users/carapai/projects/scorecard-app/node_modules/nx/src/project-graph/project-graph.js:28:15)
+    at run (/Users/carapai/projects/scorecard-app/node_modules/nx/src/command-line/run.js:171:69)
+    at requireCli (/Users/carapai/projects/scorecard-app/node_modules/nx/bin/run-executor.js:17:23)
+    at Object.<anonymous> (/Users/carapai/projects/scorecard-app/node_modules/nx/bin/run-executor.js:12:1)
+    at Module._compile (node:internal/modules/cjs/loader:1101:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at node:internal/main/run_main_module:17:47

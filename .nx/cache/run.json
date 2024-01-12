@@ -1,0 +1,32 @@
+{
+  "run": {
+    "command": "lerna run start --scope=app",
+    "startTime": "2024-01-12T07:27:16.919Z",
+    "endTime": "2024-01-12T07:27:37.300Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "@scorecard/shared:build",
+      "target": "build",
+      "projectName": "@scorecard/shared",
+      "hash": "508c55d6c4d8b1f6ab4e2adb59a388ecce489407ed603b4be95b2de614ce93f3",
+      "startTime": "2024-01-12T07:27:16.931Z",
+      "endTime": "2024-01-12T07:27:26.756Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    },
+    {
+      "taskId": "app:start",
+      "target": "start",
+      "projectName": "app",
+      "hash": "69117feb3790b8918fa4bb7783d47fd7384c7193ec5e39c9f95c2433afb38e2f",
+      "startTime": "2024-01-12T07:27:26.756Z",
+      "endTime": "2024-01-12T07:27:37.300Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    }
+  ]
+}
