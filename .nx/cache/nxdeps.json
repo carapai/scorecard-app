@@ -296,7 +296,7 @@
           },
           {
             "file": "packages/shared/src/components/ScorecardView/components/Download/Components/DownloadMenu.js",
-            "hash": "17655507804110357572"
+            "hash": "9159846788629553183"
           },
           {
             "file": "packages/shared/src/components/ScorecardView/components/Download/index.js",
@@ -1516,7 +1516,7 @@
           },
           {
             "file": "packages/shared/src/services/getScorecardCellData.js",
-            "hash": "5342390258686648551"
+            "hash": "15694030116601385937"
           },
           {
             "file": "packages/shared/src/services/getScorecardData.js",

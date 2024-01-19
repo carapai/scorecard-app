@@ -14,7 +14,7 @@ export default function DownloadMenu({ onClose, onDownload }) {
     const postToAlma = async ({ scorecard }) => {
         if (organisationUnit.orgUnits.length > 0 && period.periods.length > 0) {
             try {
-                axios.post("http://localhost:3001/api/alma", {
+                axios.post("https://services.dhis2.hispuganda.org/api/alma", {
                     dx: `IN_GROUP-SWDeaw0RUyR`,
                     pe: period.periods[0].id,
                     scorecard,
