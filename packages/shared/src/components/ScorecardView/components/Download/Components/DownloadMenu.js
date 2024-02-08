@@ -61,7 +61,7 @@ export default function DownloadMenu({ onClose, onDownload }) {
                     dataTest={"test-alma-data-json"}
                     label={`ALMA`}
                     onClick={() => {
-                        postToAlma({ scorecard: 1407 });
+                        postToAlma({ scorecard: 1331 });
                         onClose();
                     }}
                 />
