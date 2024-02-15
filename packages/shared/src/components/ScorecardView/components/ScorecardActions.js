@@ -35,6 +35,7 @@ export default function ScorecardActions({
         ScorecardViewState("options")
     );
     const [optionsOpen, setOptionsOpen] = useState(false);
+    const [actionsOpen, setActionsOpen] = useState(false);
     const { baseUrl, serverVersion } = useConfig();
     const { download: onDownload } = useDownload(downloadAreaRef, dataEngine);
     const scorecardId = useRecoilValue(ScorecardIdState);
@@ -92,12 +93,14 @@ export default function ScorecardActions({
                             </Button>
                         )}
                         <DropdownButton
+                            open={actionsOpen}
                             component={
                                 <DownloadMenu
-                                    onClose={() => {}}
+                                    onClose={() => setActionsOpen(() => false)}
                                     onDownload={onDownload}
                                 />
                             }
+                            onClick={() => setActionsOpen((prev) => !prev)}
                             className="download-button"
                             dataTest={"download-button"}
                         >

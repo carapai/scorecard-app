@@ -1,0 +1,425 @@
+[2K[1G[33mwarning[39m package.json: No license field
+[2K[1G[2m$ d2 app scripts build --verbose[22m
+[32m[1mBuild parameters:[22m[39m 
+[32m - Mode :[39m [33mproduction[39m
+[36mGenerating internationalization strings... [39m
+[31mi18next-scanner:[39m Unable to parse code "{
+                  variables1: dt?.dataSet?.periodType,
+                  variables2: dt?.dataSet?.timelyDays,
+                }"
+[31mi18next-scanner:[39m Error: Line 2: Unexpected token .
+    at ErrorHandler.constructError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5012:22)
+    at ErrorHandler.createError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5028:27)
+    at Parser.unexpectedTokenError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1985:39)
+    at Parser.throwUnexpectedToken (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1995:21)
+    at Parser.parsePrimaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2366:38)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseLeftHandSideExpressionAllowCall (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2899:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseUpdateExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3004:26)
+    at Parser.parseUnaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3048:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseExponentiationExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3054:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseBinaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3089:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseConditionalExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3141:26) {
+  index: 36,
+  lineNumber: 2,
+  description: 'Unexpected token .'
+}
+[31mi18next-scanner:[39m Unable to parse code "{
+          variables: res?.description,
+        }"
+[31mi18next-scanner:[39m Error: Line 2: Unexpected token .
+    at ErrorHandler.constructError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5012:22)
+    at ErrorHandler.createError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5028:27)
+    at Parser.unexpectedTokenError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1985:39)
+    at Parser.throwUnexpectedToken (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1995:21)
+    at Parser.parsePrimaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2366:38)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseLeftHandSideExpressionAllowCall (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2899:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseUpdateExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3004:26)
+    at Parser.parseUnaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3048:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseExponentiationExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3054:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseBinaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3089:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseConditionalExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3141:26) {
+  index: 28,
+  lineNumber: 2,
+  description: 'Unexpected token .'
+}
+[31mi18next-scanner:[39m Unable to parse code "{
+            variables1: res?.shortName,
+            variables2: res?.code,
+            variables3: res?.displayFormName,
+          }"
+[31mi18next-scanner:[39m Error: Line 2: Unexpected token .
+    at ErrorHandler.constructError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5012:22)
+    at ErrorHandler.createError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5028:27)
+    at Parser.unexpectedTokenError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1985:39)
+    at Parser.throwUnexpectedToken (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1995:21)
+    at Parser.parsePrimaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2366:38)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseLeftHandSideExpressionAllowCall (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2899:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseUpdateExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3004:26)
+    at Parser.parseUnaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3048:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseExponentiationExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3054:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseBinaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3089:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseConditionalExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3141:26) {
+  index: 31,
+  lineNumber: 2,
+  description: 'Unexpected token .'
+}
+[31mi18next-scanner:[39m Unable to parse code "{
+            variables: data?.sources?.dataElements?.length,
+          }"
+[31mi18next-scanner:[39m Error: Line 2: Unexpected token .
+    at ErrorHandler.constructError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5012:22)
+    at ErrorHandler.createError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5028:27)
+    at Parser.unexpectedTokenError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1985:39)
+    at Parser.throwUnexpectedToken (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1995:21)
+    at Parser.parsePrimaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2366:38)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseLeftHandSideExpressionAllowCall (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2899:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseUpdateExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3004:26)
+    at Parser.parseUnaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3048:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseExponentiationExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3054:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseBinaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3089:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseConditionalExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3141:26) {
+  index: 31,
+  lineNumber: 2,
+  description: 'Unexpected token .'
+}
+[31mi18next-scanner:[39m Unable to parse code "{
+            variables: formatBytes(
+              Buffer.byteLength(selected?.function, "utf-8"),
+              2
+            ),
+          }"
+[31mi18next-scanner:[39m Error: Line 3: Unexpected token .
+    at ErrorHandler.constructError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5012:22)
+    at ErrorHandler.createError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5028:27)
+    at Parser.unexpectedTokenError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1985:39)
+    at Parser.throwUnexpectedToken (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1995:21)
+    at Parser.parsePrimaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2366:38)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseLeftHandSideExpressionAllowCall (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2899:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseUpdateExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3004:26)
+    at Parser.parseUnaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3048:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseExponentiationExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3054:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseBinaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3089:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseConditionalExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3141:26) {
+  index: 80,
+  lineNumber: 3,
+  description: 'Unexpected token .'
+}
+[31mi18next-scanner:[39m Unable to parse code "{
+                  variables1: dataSet?.periodType,
+                  variables2: dataSet?.timelyDays,
+                }"
+[31mi18next-scanner:[39m Error: Line 2: Unexpected token .
+    at ErrorHandler.constructError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5012:22)
+    at ErrorHandler.createError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5028:27)
+    at Parser.unexpectedTokenError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1985:39)
+    at Parser.throwUnexpectedToken (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1995:21)
+    at Parser.parsePrimaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2366:38)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseLeftHandSideExpressionAllowCall (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2899:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseUpdateExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3004:26)
+    at Parser.parseUnaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3048:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseExponentiationExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3054:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseBinaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3089:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseConditionalExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3141:26) {
+  index: 41,
+  lineNumber: 2,
+  description: 'Unexpected token .'
+}
+[31mi18next-scanner:[39m Unable to parse code "{
+                    variable: indicatorDetails?.displayDescription,
+                }"
+[31mi18next-scanner:[39m Error: Line 2: Unexpected token .
+    at ErrorHandler.constructError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5012:22)
+    at ErrorHandler.createError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5028:27)
+    at Parser.unexpectedTokenError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1985:39)
+    at Parser.throwUnexpectedToken (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1995:21)
+    at Parser.parsePrimaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2366:38)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseLeftHandSideExpressionAllowCall (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2899:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseUpdateExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3004:26)
+    at Parser.parseUnaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3048:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseExponentiationExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3054:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseBinaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3089:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseConditionalExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3141:26) {
+  index: 50,
+  lineNumber: 2,
+  description: 'Unexpected token .'
+}
+[31mi18next-scanner:[39m Unable to parse code "{ variables: legendSet?.length }"
+[31mi18next-scanner:[39m Error: Line 1: Unexpected token .
+    at ErrorHandler.constructError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5012:22)
+    at ErrorHandler.createError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5028:27)
+    at Parser.unexpectedTokenError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1985:39)
+    at Parser.throwUnexpectedToken (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1995:21)
+    at Parser.parsePrimaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2366:38)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseLeftHandSideExpressionAllowCall (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2899:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseUpdateExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3004:26)
+    at Parser.parseUnaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3048:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseExponentiationExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3054:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseBinaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3089:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseConditionalExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3141:26) {
+  index: 24,
+  lineNumber: 1,
+  description: 'Unexpected token .'
+}
+[31mi18next-scanner:[39m Unable to parse code "{
+            variables: data?.sources?.indicators?.length,
+          }"
+[31mi18next-scanner:[39m Error: Line 2: Unexpected token .
+    at ErrorHandler.constructError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5012:22)
+    at ErrorHandler.createError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5028:27)
+    at Parser.unexpectedTokenError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1985:39)
+    at Parser.throwUnexpectedToken (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1995:21)
+    at Parser.parsePrimaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2366:38)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseLeftHandSideExpressionAllowCall (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2899:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseUpdateExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3004:26)
+    at Parser.parseUnaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3048:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseExponentiationExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3054:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseBinaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3089:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseConditionalExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3141:26) {
+  index: 31,
+  lineNumber: 2,
+  description: 'Unexpected token .'
+}
+[31mi18next-scanner:[39m Unable to parse code "{
+              variables: dataSets?.length,
+              variables2: programs?.length,
+            }"
+[31mi18next-scanner:[39m Error: Line 2: Unexpected token .
+    at ErrorHandler.constructError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5012:22)
+    at ErrorHandler.createError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5028:27)
+    at Parser.unexpectedTokenError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1985:39)
+    at Parser.throwUnexpectedToken (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1995:21)
+    at Parser.parsePrimaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2366:38)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseLeftHandSideExpressionAllowCall (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2899:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseUpdateExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3004:26)
+    at Parser.parseUnaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3048:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseExponentiationExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3054:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseBinaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3089:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseConditionalExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3141:26) {
+  index: 37,
+  lineNumber: 2,
+  description: 'Unexpected token .'
+}
+[31mi18next-scanner:[39m Unable to parse code "{
+          variables1: res?.displayName,
+        }"
+[31mi18next-scanner:[39m Error: Line 2: Unexpected token .
+    at ErrorHandler.constructError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5012:22)
+    at ErrorHandler.createError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5028:27)
+    at Parser.unexpectedTokenError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1985:39)
+    at Parser.throwUnexpectedToken (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1995:21)
+    at Parser.parsePrimaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2366:38)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseLeftHandSideExpressionAllowCall (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2899:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseUpdateExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3004:26)
+    at Parser.parseUnaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3048:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseExponentiationExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3054:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseBinaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3089:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseConditionalExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3141:26) {
+  index: 29,
+  lineNumber: 2,
+  description: 'Unexpected token .'
+}
+[31mi18next-scanner:[39m Unable to parse code "{
+            variables: data?.sources?.program?.displayName,
+          }"
+[31mi18next-scanner:[39m Error: Line 2: Unexpected token .
+    at ErrorHandler.constructError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5012:22)
+    at ErrorHandler.createError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5028:27)
+    at Parser.unexpectedTokenError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1985:39)
+    at Parser.throwUnexpectedToken (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1995:21)
+    at Parser.parsePrimaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2366:38)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseLeftHandSideExpressionAllowCall (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2899:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseUpdateExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3004:26)
+    at Parser.parseUnaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3048:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseExponentiationExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3054:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseBinaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3089:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseConditionalExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3141:26) {
+  index: 31,
+  lineNumber: 2,
+  description: 'Unexpected token .'
+}
+[31mi18next-scanner:[39m Unable to parse code "{
+            variables1: res?.displayName,
+            variables2: res?.aggregationType,
+            variables3: res?.displayDescription,
+            variables4: res?.displayShortName,
+            variables5: res?.code,
+            variables6: res?.decimals,
+          }"
+[31mi18next-scanner:[39m Error: Line 2: Unexpected token .
+    at ErrorHandler.constructError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5012:22)
+    at ErrorHandler.createError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5028:27)
+    at Parser.unexpectedTokenError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1985:39)
+    at Parser.throwUnexpectedToken (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1995:21)
+    at Parser.parsePrimaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2366:38)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseLeftHandSideExpressionAllowCall (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2899:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseUpdateExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3004:26)
+    at Parser.parseUnaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3048:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseExponentiationExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3054:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseBinaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3089:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseConditionalExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3141:26) {
+  index: 31,
+  lineNumber: 2,
+  description: 'Unexpected token .'
+}
+[31mi18next-scanner:[39m Unable to parse code "{
+            variables: res?.aggregationType,
+            variables2: res?.analyticsType,
+          }"
+[31mi18next-scanner:[39m Error: Line 2: Unexpected token .
+    at ErrorHandler.constructError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5012:22)
+    at ErrorHandler.createError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5028:27)
+    at Parser.unexpectedTokenError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1985:39)
+    at Parser.throwUnexpectedToken (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1995:21)
+    at Parser.parsePrimaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2366:38)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseLeftHandSideExpressionAllowCall (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2899:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseUpdateExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3004:26)
+    at Parser.parseUnaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3048:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseExponentiationExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3054:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseBinaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3089:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseConditionalExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3141:26) {
+  index: 30,
+  lineNumber: 2,
+  description: 'Unexpected token .'
+}
+[31mi18next-scanner:[39m Unable to parse code "{
+              variables: lowerCaseAllWordsExceptFirstLetters(
+                res?.analyticsType
+              ),
+            }"
+[31mi18next-scanner:[39m Error: Line 3: Unexpected token .
+    at ErrorHandler.constructError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5012:22)
+    at ErrorHandler.createError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5028:27)
+    at Parser.unexpectedTokenError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1985:39)
+    at Parser.throwUnexpectedToken (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1995:21)
+    at Parser.parsePrimaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2366:38)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseLeftHandSideExpressionAllowCall (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2899:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseUpdateExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3004:26)
+    at Parser.parseUnaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3048:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseExponentiationExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3054:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseBinaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3089:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseConditionalExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3141:26) {
+  index: 85,
+  lineNumber: 3,
+  description: 'Unexpected token .'
+}
+[31mi18next-scanner:[39m Unable to parse code "{ variables: legendSet?.length }"
+[31mi18next-scanner:[39m Error: Line 1: Unexpected token .
+    at ErrorHandler.constructError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5012:22)
+    at ErrorHandler.createError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5028:27)
+    at Parser.unexpectedTokenError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1985:39)
+    at Parser.throwUnexpectedToken (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1995:21)
+    at Parser.parsePrimaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2366:38)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseLeftHandSideExpressionAllowCall (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2899:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseUpdateExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3004:26)
+    at Parser.parseUnaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3048:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseExponentiationExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3054:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseBinaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3089:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseConditionalExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3141:26) {
+  index: 24,
+  lineNumber: 1,
+  description: 'Unexpected token .'
+}
+[31mi18next-scanner:[39m Unable to parse code "{ number: selectedItems?.length }"
+[31mi18next-scanner:[39m Error: Line 1: Unexpected token .
+    at ErrorHandler.constructError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5012:22)
+    at ErrorHandler.createError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:5028:27)
+    at Parser.unexpectedTokenError (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1985:39)
+    at Parser.throwUnexpectedToken (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:1995:21)
+    at Parser.parsePrimaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2366:38)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseLeftHandSideExpressionAllowCall (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2899:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseUpdateExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3004:26)
+    at Parser.parseUnaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3048:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseExponentiationExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3054:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseBinaryExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3089:26)
+    at Parser.inheritCoverGrammar (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:2285:37)
+    at Parser.parseConditionalExpression (/Users/carapai/projects/scorecard-app/node_modules/esprima/dist/esprima.js:3141:26) {
+  index: 25,
+  lineNumber: 1,
+  description: 'Unexpected token .'
+}
+[2mNo i18n updates found![22m 
+[36mBuilding lib [1m@scorecard/shared[22m... [39m

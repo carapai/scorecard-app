@@ -22,10 +22,19 @@ const ScorecardMigration = React.lazy(() =>
     import("../Main/Components/ScorecardMigration")
 );
 
+const AlmaResponse = React.lazy(() =>
+    import("@scorecard/shared").then((module) => ({
+        default: module.AlmaResponse,
+    }))
+);
 const pages = [
     {
         pathname: "/migrate",
         component: ScorecardMigration,
+    },
+    {
+        pathname: "/alma",
+        component: AlmaResponse,
     },
     {
         pathname: "/edit/:id",
