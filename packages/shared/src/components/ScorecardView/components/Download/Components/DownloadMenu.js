@@ -25,6 +25,7 @@ export default function DownloadMenu({ onClose, onDownload }) {
     const [period] = useRecoilState(ScorecardViewState("periodSelection"));
 
     const postToAlma = async ({ scorecard }) => {
+        console.log(organisationUnit.orgUnits);
         if (organisationUnit.orgUnits.length > 0 && period.periods.length > 0) {
             try {
                 await axios.post(
@@ -59,12 +60,14 @@ export default function DownloadMenu({ onClose, onDownload }) {
                         />
                     ))}
                 </MenuItem>
-                <MenuItem dataTest={"upload-menu"} label={"ALMA"}>
+                <MenuItem dataTest={"upload-menu"} label={"Upload"}>
                     <MenuItem
                         dataTest={"test-alma-data-json"}
-                        label={`Upload`}
+                        label={`ALMA`}
                         onClick={() => {
                             setHide(() => false);
+                            console.log(period);
+                            console.log(organisationUnit);
                         }}
                     />
                     <MenuItem
@@ -77,16 +80,23 @@ export default function DownloadMenu({ onClose, onDownload }) {
                 </MenuItem>
             </FlyoutMenu>
 
-            <Modal onClose={() => setHide(() => true)} small hide={hide}>
+            <Modal onClose={() => setHide(() => true)} medium hide={hide}>
                 <ModalTitle>Send to ALMA</ModalTitle>
                 <ModalContent>
-                    Are you sure you want send data to alma now?
+                    Are you sure you want send data to ALMA scorecard for
+                    organisation{" "}
+                    {organisationUnit.orgUnits.length > 0
+                        ? organisationUnit.orgUnits[0].displayName
+                        : ""}{" "}
+                    and period{" "}
+                    {period.periods.length > 0 ? period.periods[0].name : ""}
                 </ModalContent>
                 <ModalActions>
                     <ButtonStrip end>
                         <Button
                             onClick={() => {
                                 setHide(() => true);
+                                onClose();
                             }}
                             secondary
                         >
