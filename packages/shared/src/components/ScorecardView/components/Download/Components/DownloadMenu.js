@@ -48,11 +48,14 @@ export default function DownloadMenu({ onClose, onDownload }) {
                 const isComplete = await fetchAlmaResponse();
 
                 if (isComplete) {
-                    await axios.post("http://localhost:3001/api/alma", {
-                        pe: period.periods[0].id,
-                        scorecard,
-                        ou: organisationUnit.orgUnits[0].id,
-                    });
+                    await axios.post(
+                        "https://services.dhis2.hispuganda.org/api/alma",
+                        {
+                            pe: period.periods[0].id,
+                            scorecard,
+                            ou: organisationUnit.orgUnits[0].id,
+                        }
+                    );
                 } else {
                     show({
                         message:
