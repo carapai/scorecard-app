@@ -1,20 +1,23 @@
+import { Modal, ModalActions, ModalContent, ModalTitle } from "@dhis2-ui/modal";
 import { useAlert } from "@dhis2/app-runtime";
-import { FlyoutMenu, MenuItem, ButtonStrip, Button } from "@dhis2/ui";
-import { Modal, ModalTitle, ModalContent, ModalActions } from "@dhis2-ui/modal";
+import { Button, ButtonStrip, FlyoutMenu, MenuItem } from "@dhis2/ui";
 import axios from "axios";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { useDataEngine } from "@dhis2/app-runtime";
 import { DownloadTypes } from "../../../../../constants";
 import { ScorecardViewState } from "../../../../../state";
+import { UserCanSed2Alma } from "../../../../../state/user";
 import AlmaResponse from "../../../../AlmaResponse";
 
 export default function DownloadMenu({ onClose, onDownload }) {
     const [organisationUnit] = useRecoilState(
         ScorecardViewState("orgUnitSelection")
     );
-    const history = useHistory();
+    const engine = useDataEngine();
+
+    const canSend = useRecoilValue(UserCanSed2Alma());
     const [hide, setHide] = useState(true);
     const [hideProgress, setHideProgress] = useState(true);
 
@@ -24,18 +27,39 @@ export default function DownloadMenu({ onClose, onDownload }) {
     );
     const [period] = useRecoilState(ScorecardViewState("periodSelection"));
 
+    const fetchAlmaResponse = async () => {
+        try {
+            const {
+                completed: { completed },
+            } = await engine.query({
+                completed: {
+                    resource: "dataStore/alma/completed",
+                },
+            });
+            return completed;
+        } catch (error) {
+            return true;
+        }
+    };
+
     const postToAlma = async ({ scorecard }) => {
-        console.log(organisationUnit.orgUnits);
         if (organisationUnit.orgUnits.length > 0 && period.periods.length > 0) {
             try {
-                await axios.post(
-                    "https://services.dhis2.hispuganda.org/api/alma",
-                    {
+                const isComplete = await fetchAlmaResponse();
+
+                if (isComplete) {
+                    await axios.post("http://localhost:3001/api/alma", {
                         pe: period.periods[0].id,
                         scorecard,
                         ou: organisationUnit.orgUnits[0].id,
-                    }
-                );
+                    });
+                } else {
+                    show({
+                        message:
+                            "Another alma export process is still running try again later",
+                        type: { critical: true },
+                    });
+                }
             } catch (error) {
                 show({
                     message: error.message ?? e.toString(),
@@ -60,24 +84,24 @@ export default function DownloadMenu({ onClose, onDownload }) {
                         />
                     ))}
                 </MenuItem>
-                <MenuItem dataTest={"upload-menu"} label={"Upload"}>
-                    <MenuItem
-                        dataTest={"test-alma-data-json"}
-                        label={`ALMA`}
-                        onClick={() => {
-                            setHide(() => false);
-                            console.log(period);
-                            console.log(organisationUnit);
-                        }}
-                    />
-                    <MenuItem
-                        dataTest={"test-alma-data-json"}
-                        label={`View Progress`}
-                        onClick={() => {
-                            setHideProgress(() => false);
-                        }}
-                    />
-                </MenuItem>
+                {canSend && (
+                    <MenuItem dataTest={"upload-menu"} label={"Upload"}>
+                        <MenuItem
+                            dataTest={"test-alma-data-json"}
+                            label={`ALMA`}
+                            onClick={() => {
+                                setHide(() => false);
+                            }}
+                        />
+                        <MenuItem
+                            dataTest={"test-alma-data-json"}
+                            label={`View Progress`}
+                            onClick={() => {
+                                setHideProgress(() => false);
+                            }}
+                        />
+                    </MenuItem>
+                )}
             </FlyoutMenu>
 
             <Modal onClose={() => setHide(() => true)} medium hide={hide}>

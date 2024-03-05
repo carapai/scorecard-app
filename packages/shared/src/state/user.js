@@ -1,9 +1,9 @@
-import {find} from "lodash";
-import {atom, selector, selectorFamily} from "recoil";
-import {EngineState} from "./engine";
-import {ScorecardSummaryState} from "./scorecard";
-import {DefaultAuthority} from "../constants";
-import {getUserAuthority} from "../utils";
+import { find } from "lodash";
+import { atom, selector, selectorFamily } from "recoil";
+import { EngineState } from "./engine";
+import { ScorecardSummaryState } from "./scorecard";
+import { DefaultAuthority } from "../constants";
+import { getUserAuthority } from "../utils";
 
 const userQuery = {
     user: {
@@ -24,11 +24,11 @@ export const UserState = atom({
     key: "userState",
     default: selector({
         key: "userStateSelector",
-        get: async ({get}) => {
+        get: async ({ get }) => {
             try {
                 const engine = get(EngineState);
                 if (engine) {
-                    const {user} = await engine.query(userQuery);
+                    const { user } = await engine.query(userQuery);
                     if (user) {
                         return user;
                     }
@@ -43,14 +43,22 @@ export const UserState = atom({
 
 export const UserAuthorityOnScorecard = selectorFamily({
     key: "user-scorecard-authority",
-    get:
-        (scorecardId) =>
-            ({get}) => {
-                const scorecardSummary = find(get(ScorecardSummaryState), [
-                    "id",
-                    scorecardId,
-                ]);
-                const user = get(UserState);
-                return getUserAuthority(user, scorecardSummary) ?? DefaultAuthority;
-            },
+    get: (scorecardId) => ({ get }) => {
+        const scorecardSummary = find(get(ScorecardSummaryState), [
+            "id",
+            scorecardId,
+        ]);
+        const user = get(UserState);
+        return getUserAuthority(user, scorecardSummary) ?? DefaultAuthority;
+    },
+});
+
+export const UserCanSed2Alma = selectorFamily({
+    key: "user-can-send-2-alma",
+    get: () => ({ get }) => {
+        const user = get(UserState);
+        return (
+            user.userGroups.findIndex(({ id }) => id === "HsRAQNFMr44") !== -1
+        );
+    },
 });

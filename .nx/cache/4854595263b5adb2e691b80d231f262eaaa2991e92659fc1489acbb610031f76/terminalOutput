@@ -1,0 +1,56 @@
+[2K[1G[2m$ yarn extract-translations && yarn generate-translations && rimraf build[22m
+[2K[1G[2m$ d2-app-scripts i18n extract[22m
+[2mNo i18n updates found![22m 
+[36mDone! [39m
+[2K[1G[2m$ d2-app-scripts i18n generate[22m
+[36mDone! [39m
+[2K[1G[2m$ ./build.sh[22m
+Cleaning...
+rm: build: No such file or directory
+Building widget version 2.6.2
+Creating an optimized production build...
+[33mCompiled with warnings.[39m
+[33m[39m
+[7m./src/modules/Main/Components/ScorecardList/index.js[27m
+  [1mLine 83:8:[22m  React Hook useEffect has missing dependencies: 'engineState', 'history', 'setCurrentDashboardId', and 'setRoute'. Either include them or remove the dependency array  [33m[4mreact-hooks/exhaustive-deps[24m[39m
+
+Search for the [4m[33mkeywords[39m[24m to learn more about each warning.
+To ignore, add [36m// eslint-disable-next-line[39m to the line before.
+
+File sizes after gzip:
+
+  940.67 KB  [2mbuild/static/js/[22m[36m2.05f87a08.chunk.js[39m
+  112.58 KB  [2mbuild/static/js/[22m[36m3.54fc18ed.chunk.js[39m
+  64.12 KB   [2mbuild/static/js/[22m[36mmain.edb41bab.chunk.js[39m
+  27.79 KB   [2mbuild/static/js/[22m[36m9.a7387d7b.chunk.js[39m
+  16.71 KB   [2mbuild/static/js/[22m[36m5.7e149d73.chunk.js[39m
+  13.75 KB   [2mbuild/static/js/[22m[36m4.fc9dcc7c.chunk.js[39m
+  6.72 KB    [2mbuild/static/js/[22m[36m7.60d94121.chunk.js[39m
+  4.65 KB    [2mbuild/static/css/[22m[36mmain.54561c1c.chunk.css[39m
+  2.26 KB    [2mbuild/static/js/[22m[36m10.2d788610.chunk.js[39m
+  2.21 KB    [2mbuild/static/css/[22m[36m2.0432d3ca.chunk.css[39m
+  1.9 KB     [2mbuild/static/js/[22m[36m6.d4a384b5.chunk.js[39m
+  1.59 KB    [2mbuild/static/js/[22m[36mruntime-main.60e04530.js[39m
+  1005 B     [2mbuild/static/css/[22m[36m4.06d9abc9.chunk.css[39m
+  985 B      [2mbuild/static/js/[22m[36m8.ca4f76ad.chunk.js[39m
+  449 B      [2mbuild/static/css/[22m[36m6.eec30447.chunk.css[39m
+  294 B      [2mbuild/static/css/[22m[36m5.aed555b5.chunk.css[39m
+  188 B      [2mbuild/static/css/[22m[36m8.fefaf664.chunk.css[39m
+
+The project was built assuming it is hosted at [32m./[39m.
+You can control this with the [32mhomepage[39m field in your [36mpackage.json[39m.
+
+The [36mbuild[39m folder is ready to be deployed.
+
+Find out more about deployment here:
+
+  [33mbit.ly/CRA-deploy[39m
+
+Done!
+Generating manifest...
+[36mReading package data: [39mpackage.json
+[36mValidating manifest: [39m[32m✓[39m Ok
+[36mWriting manifest to:[39m build/manifest.webapp
+[36mDone![39m
+Writing asset-manifest.json, dhis2-app-icon.png, favicon-16x16.png, favicon-32x32.png, favicon-48x48.png, favicon-96x96.png, index.html, manifest.webapp, precache-manifest.d89a964058599b7bf0c420ab1a1eb3b5.js, service-worker.js, static to hisptz-scorecard-widget-2.6.2.zip...
+zipped!

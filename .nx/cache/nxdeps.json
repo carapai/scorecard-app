@@ -76,7 +76,7 @@
           },
           {
             "file": "packages/shared/src/components/AlmaResponse/index.js",
-            "hash": "8572972639704929656"
+            "hash": "3692141297259462287"
           },
           {
             "file": "packages/shared/src/components/CustomForm/components/CustomField/components/CustomCheckboxField.js",
@@ -300,7 +300,7 @@
           },
           {
             "file": "packages/shared/src/components/ScorecardView/components/Download/Components/DownloadMenu.js",
-            "hash": "9735275164914535211"
+            "hash": "14128943237270968793"
           },
           {
             "file": "packages/shared/src/components/ScorecardView/components/Download/index.js",
@@ -1584,7 +1584,7 @@
           },
           {
             "file": "packages/shared/src/state/user.js",
-            "hash": "14666032822949786584"
+            "hash": "10796873485880544118"
           },
           {
             "file": "packages/shared/src/state/validators.js",
@@ -2787,14 +2787,6 @@
             "hash": "799906439185061418"
           },
           {
-            "file": "packages/app/src/locales/en/translations.json",
-            "hash": "5949413596159749807"
-          },
-          {
-            "file": "packages/app/src/locales/fr/translations.json",
-            "hash": "9301946268568213116"
-          },
-          {
             "file": "packages/app/src/locales/index.js",
             "hash": "11975739796281719351"
           },
@@ -2848,7 +2840,7 @@
           },
           {
             "file": "packages/app/src/modules/Main/Components/ScorecardList/index.js",
-            "hash": "13706634679994779762"
+            "hash": "18305868347256627894"
           },
           {
             "file": "packages/app/src/modules/Main/Components/ScoreCardManagement/Components/Access/Components/OrgUnitFilter/index.js",
@@ -3169,6 +3161,14 @@
           {
             "file": "packages/app/src/print.css",
             "hash": "10976773648037138624"
+          },
+          {
+            "file": "packages/app/src/locales/en/translations.json",
+            "hash": "5949413596159749807"
+          },
+          {
+            "file": "packages/app/src/locales/fr/translations.json",
+            "hash": "9301946268568213116"
           }
         ]
       }

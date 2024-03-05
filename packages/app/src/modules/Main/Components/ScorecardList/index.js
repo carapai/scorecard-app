@@ -1,7 +1,7 @@
-import {useAlert} from "@dhis2/app-runtime";
-import {useSetting} from "@dhis2/app-service-datastore";
+import { useAlert } from "@dhis2/app-runtime";
+import { useSetting } from "@dhis2/app-service-datastore";
 import i18n from "@dhis2/d2-i18n";
-import {Button, ButtonStrip, DropdownButton, Input, Tooltip} from "@dhis2/ui";
+import { Button, ButtonStrip, DropdownButton, Input, Tooltip } from "@dhis2/ui";
 import AddIcon from "@material-ui/icons/Add";
 import HelpIcon from "@material-ui/icons/Help";
 import ListViewIcon from "@material-ui/icons/Reorder";
@@ -13,13 +13,18 @@ import {
     SCORECARD_LIST_HELP_STEPS,
     ScorecardIdState,
     ScorecardSummaryState,
-    STEP_OPTIONS
+    STEP_OPTIONS,
 } from "@scorecard/shared";
-import {Steps} from "intro.js-react";
-import {debounce, isEmpty} from "lodash";
-import React, {Suspense, useEffect, useRef, useState} from "react";
-import {useHistory} from "react-router-dom";
-import {useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState,} from "recoil";
+import { Steps } from "intro.js-react";
+import { debounce, isArray, isEmpty } from "lodash";
+import React, { Suspense, useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
+import {
+    useRecoilState,
+    useRecoilValue,
+    useResetRecoilState,
+    useSetRecoilState,
+} from "recoil";
 import EmptyScoreCardList from "../EmptyScoreCardList";
 import EmptySearchList from "./Components/EmptySearchList";
 import GridScorecardDisplay from "./Components/GridScorecardDisplay";
@@ -32,13 +37,13 @@ export default function ScorecardList() {
     const setRoute = useSetRecoilState(RouterState);
     const [helpEnabled, setHelpEnabled] = useRecoilState(HelpState);
     const history = useHistory();
-    const [scorecardViewType, {set}] = useSetting("scorecardViewType");
+    const [scorecardViewType, { set }] = useSetting("scorecardViewType");
     const scorecards = useRecoilValue(ScorecardSummaryState);
     const [keyword, setKeyword] = useState();
     const [filteredScorecards, setFilteredScorecards] = useState(scorecards);
-    const {show} = useAlert(
-        ({message}) => message,
-        ({type}) => ({...type, duration: 3000})
+    const { show } = useAlert(
+        ({ message }) => message,
+        ({ type }) => ({ ...type, duration: 3000 })
     );
 
     const onViewChange = () => {
@@ -51,7 +56,7 @@ export default function ScorecardList() {
         } catch (e) {
             show({
                 message: e.message ?? e.toString(),
-                type: {critical: true},
+                type: { critical: true },
             });
         }
     };
@@ -60,11 +65,17 @@ export default function ScorecardList() {
         debounce((keyword) => {
             setFilteredScorecards(() => {
                 return scorecards.filter(
-                    ({id, title, description, additionalLabels}) => {
-                        const index =
-                            `${id} ${title} ${description} ${additionalLabels?.join(
-                                " "
-                            )}`.toLowerCase();
+                    ({ id, title, description, additionalLabels }) => {
+                        let index = `${id} ${title} ${description}`.toLowerCase();
+
+                        if (additionalLabels && !isArray(additionalLabels)) {
+                            index = `${index} ${[additionalLabels].join(" ")}`;
+                        } else if (
+                            additionalLabels &&
+                            isArray(additionalLabels)
+                        ) {
+                            index = `${index} ${additionalLabels.join(" ")}`;
+                        }
                         return index.match(new RegExp(keyword.toLowerCase()));
                     }
                 );
@@ -82,7 +93,7 @@ export default function ScorecardList() {
 
     const onAddClick = () => {
         resetScorecardIdState();
-        setRoute((prevRoute) => ({...prevRoute, previous: `/`}));
+        setRoute((prevRoute) => ({ ...prevRoute, previous: `/` }));
         history.push("/add");
     };
 
@@ -91,7 +102,7 @@ export default function ScorecardList() {
     };
 
     return (
-        <Suspense fallback={<FullPageLoader/>}>
+        <Suspense fallback={<FullPageLoader />}>
             <Steps
                 options={STEP_OPTIONS}
                 enabled={helpEnabled}
@@ -100,16 +111,19 @@ export default function ScorecardList() {
                 initialStep={0}
             />
             {isEmpty(scorecards) ? (
-                <EmptyScoreCardList/>
+                <EmptyScoreCardList />
             ) : (
                 <div className="column h-100">
                     <div className="row p-16">
-                        <div className="row p-45 center" style={{paddingLeft: "35%"}}>
+                        <div
+                            className="row p-45 center"
+                            style={{ paddingLeft: "35%" }}
+                        >
                             <div className="column w-30">
                                 <Input
                                     className="search-input"
                                     value={keyword}
-                                    onChange={({value}) => {
+                                    onChange={({ value }) => {
                                         setKeyword(value);
                                     }}
                                     placeholder={i18n.t("Search")}
@@ -120,18 +134,21 @@ export default function ScorecardList() {
                             <ButtonStrip end>
                                 <DropdownButton
                                     type="button"
-                                    component={<HelpMenu/>}
-                                    icon={<HelpIcon/>}
+                                    component={<HelpMenu />}
+                                    icon={<HelpIcon />}
                                 >
                                     {i18n.t("Help")}
                                 </DropdownButton>
                                 <Tooltip
-                                    content={i18n.t("Switch to {{viewType}} view", {
-                                        viewType:
-                                            scorecardViewType === "grid"
-                                                ? i18n.t("list")
-                                                : i18n.t("grid"),
-                                    })}
+                                    content={i18n.t(
+                                        "Switch to {{viewType}} view",
+                                        {
+                                            viewType:
+                                                scorecardViewType === "grid"
+                                                    ? i18n.t("list")
+                                                    : i18n.t("grid"),
+                                        }
+                                    )}
                                 >
                                     <Button
                                         onClick={onViewChange}
@@ -139,9 +156,9 @@ export default function ScorecardList() {
                                         dataTest="scorecard-view-orientation"
                                         icon={
                                             scorecardViewType === "grid" ? (
-                                                <ListViewIcon/>
+                                                <ListViewIcon />
                                             ) : (
-                                                <GridViewIcon/>
+                                                <GridViewIcon />
                                             )
                                         }
                                     />
@@ -151,7 +168,7 @@ export default function ScorecardList() {
                                     className="add-scorecard-button"
                                     onClick={onAddClick}
                                     primary
-                                    icon={<AddIcon/>}
+                                    icon={<AddIcon />}
                                 >
                                     {i18n.t("Add New Scorecard")}
                                 </Button>
@@ -160,7 +177,7 @@ export default function ScorecardList() {
                     </div>
                     {isEmpty(filteredScorecards) ? (
                         <div className="flex-1">
-                            <EmptySearchList keyword={keyword}/>
+                            <EmptySearchList keyword={keyword} />
                         </div>
                     ) : (
                         <PaginatedDisplay
