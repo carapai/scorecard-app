@@ -1,0 +1,16 @@
+[2K[1G[2m$ d2-app-scripts build[22m
+[32m[1mBuild parameters:[22m[39m 
+[32m - Mode :[39m [33mproduction[39m
+[32m - PUBLIC_URL :[39m [33m.[39m
+[32m - DHIS2_BASE_URL :[39m [33m../../..[39m
+[36mGenerating internationalization strings... [39m
+[2mNo i18n updates found![22m 
+[36mBootstrapping local appShell... [39m
+[2mA local appShell exists, skipping bootstrap. [1mUse --force to update.[22m[2m[22m 
+[36mBuilding app [1mhisptz-scorecard[22m... [39m
+[36mGenerating manifests... [39m
+[36mBuilding appShell... [39m
+[36mCreating archive from [1mbuild/app[22m at [1mbuild/bundle/hisptz-scorecard-2.6.2.zip[22m... [39m
+[2mTotal size: 6750937 bytes[22m 
+[32m[39m
+[32m**** DONE! ****[39m 

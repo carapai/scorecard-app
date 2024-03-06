@@ -59,15 +59,15 @@ export default function AlmaResponse() {
                 <div>{data.total?.total}</div>
             </div>
             <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
-                <div>Added:</div>
+                <div>Processed:</div>
                 <div>{data.added?.total}</div>
             </div>
             <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
-                <div>Processed:</div>
+                <div>Added:</div>
                 <div>{data.processed?.total}</div>
             </div>
             <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
-                <div>Failed:</div>
+                <div>Errored:</div>
                 <div>{data.failed?.total}</div>
             </div>
             <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
