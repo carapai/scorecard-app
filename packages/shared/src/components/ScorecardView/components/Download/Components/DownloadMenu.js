@@ -147,7 +147,7 @@ export default function DownloadMenu({ onClose, onDownload }) {
                 onClose={() => setHideProgress(() => true)}
                 hide={hideProgress}
             >
-                <ModalTitle>Uploading...data to ALMA Web-platform</ModalTitle>
+                <ModalTitle>Data Transfer </ModalTitle>
                 <ModalContent>
                     <AlmaResponse />
                 </ModalContent>

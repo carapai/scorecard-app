@@ -51,7 +51,7 @@ export default function AlmaResponse() {
         <div style={{ display: "flex", flexDirection: "column", gap: "30px" }}>
             <LinearLoader width="90%" amount={percentage} />
             <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
-                <div>Upload Progress:</div>
+                <div>Progress:</div>
                 <div style={{ fontWeight: "bold", color: "green" }}>
                     {percentage.toFixed(1)}%
                 </div>

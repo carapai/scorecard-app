@@ -1,8 +1,8 @@
 {
   "run": {
     "command": "lerna run build",
-    "startTime": "2024-03-13T12:13:41.836Z",
-    "endTime": "2024-03-13T12:15:04.548Z",
+    "startTime": "2024-03-13T12:41:39.667Z",
+    "endTime": "2024-03-13T12:43:07.325Z",
     "inner": false
   },
   "tasks": [
@@ -10,20 +10,9 @@
       "taskId": "@scorecard/shared:build",
       "target": "build",
       "projectName": "@scorecard/shared",
-      "hash": "406b1ae3fcaf076f9501027af7aefbde82d6bbf8ead1b7475782fbdc29cf2eb2",
-      "startTime": "2024-03-13T12:13:41.846Z",
-      "endTime": "2024-03-13T12:13:57.879Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "app:build",
-      "target": "build",
-      "projectName": "app",
-      "hash": "2c0bf26b8a7b2f7abf796b0f3d8d158ec36cb94bfa5105efdb32b09d01ee4cd4",
-      "startTime": "2024-03-13T12:13:57.880Z",
-      "endTime": "2024-03-13T12:15:03.437Z",
+      "hash": "65f50ef4aee900e6912c433a1cc7481a71fadf6fc2e0c648dc98a0a52b085c8a",
+      "startTime": "2024-03-13T12:41:39.675Z",
+      "endTime": "2024-03-13T12:41:55.571Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0
@@ -32,9 +21,20 @@
       "taskId": "widget:build",
       "target": "build",
       "projectName": "widget",
-      "hash": "db3c60f7b86b60223a366a68def294f8463cbd164306cac74e4e6702846439ec",
-      "startTime": "2024-03-13T12:13:57.880Z",
-      "endTime": "2024-03-13T12:15:04.548Z",
+      "hash": "1b2791fe8f48d9522008ce21218e081303acbe4b4ecba53ca88d1a75fd20a5cb",
+      "startTime": "2024-03-13T12:41:55.573Z",
+      "endTime": "2024-03-13T12:43:05.263Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    },
+    {
+      "taskId": "app:build",
+      "target": "build",
+      "projectName": "app",
+      "hash": "a4a9871c626396ccb37ac3f091cad5a8991298e0549b197344aaf3f47ea72294",
+      "startTime": "2024-03-13T12:41:55.573Z",
+      "endTime": "2024-03-13T12:43:07.324Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0
