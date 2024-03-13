@@ -49,7 +49,7 @@ export default function DownloadMenu({ onClose, onDownload }) {
 
                 if (isComplete) {
                     await axios.post(
-                        "https://services.dhis2.hispuganda.org/api/alma",
+                        "https://alma.services.dhis2.hispuganda.org/api/alma",
                         {
                             pe: period.periods[0].id,
                             scorecard,
