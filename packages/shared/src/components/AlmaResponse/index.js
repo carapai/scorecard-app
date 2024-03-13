@@ -55,23 +55,23 @@ export default function AlmaResponse() {
                 <div>{percentage.toFixed(1)}%</div>
             </div>
             <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
-                <div>Total:</div>
+                <div>Total Records:</div>
                 <div>{data.total?.total}</div>
             </div>
             <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
-                <div>Processed:</div>
-                <div>{data.added?.total}</div>
+                <div>Records Processed:</div>
+                <div style={{ color: "#FFBF00" }}>{data.added?.total}</div>
             </div>
             <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
-                <div>Added:</div>
-                <div>{data.processed?.total}</div>
+                <div>Records Added:</div>
+                <div style={{ color: "green" }}>{data.processed?.total}</div>
             </div>
             <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
-                <div>Errored:</div>
-                <div>{data.failed?.total}</div>
+                <div>Records Failed:</div>
+                <div style={{ color: "red" }}>{data.failed?.total}</div>
             </div>
             <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
-                <div>Current:</div>
+                <div>Status:</div>
                 <div>{data.message?.message}</div>
             </div>
         </div>

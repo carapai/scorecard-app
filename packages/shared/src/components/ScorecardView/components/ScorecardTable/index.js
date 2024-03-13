@@ -1,30 +1,34 @@
-import {DataTable} from "@dhis2/ui";
+import { DataTable } from "@dhis2/ui";
 import PropTypes from "prop-types";
-import React, {Suspense, useEffect, useMemo} from "react";
-import {DndProvider} from "react-dnd";
-import {HTML5Backend} from "react-dnd-html5-backend";
-import {useRecoilCallback, useRecoilValue} from "recoil";
+import React, { Suspense, useEffect, useMemo } from "react";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { useRecoilCallback, useRecoilValue } from "recoil";
 import ScorecardTableBody from "./Components/TableBody";
 import TableHeader from "./Components/TableHeader";
-import TableLoader, {TableLinearLoader} from "./Components/TableLoader";
-import classes from "./scorecardTable.module.css"
+import TableLoader, { TableLinearLoader } from "./Components/TableLoader";
+import classes from "./scorecardTable.module.css";
 import TableWidth from "./Components/TableWidth";
-import {ScorecardDataEngine} from "../../../../models";
-import {ScorecardDataLoadingState, ScorecardTableConfigState, ScreenDimensionState} from "../../../../state";
+import { ScorecardDataEngine } from "../../../../models";
+import {
+    ScorecardDataLoadingState,
+    ScorecardTableConfigState,
+    ScreenDimensionState,
+} from "../../../../state";
 
 export default function ScorecardTable({
-                                           orgUnits,
-                                           nested,
-                                           initialDataEngine,
-                                       }) {
+    orgUnits,
+    nested,
+    initialDataEngine,
+}) {
     const dataEngine = useMemo(
         () => initialDataEngine ?? new ScorecardDataEngine(),
         [initialDataEngine]
     );
 
-    const {width: screenWidth} = useRecoilValue(ScreenDimensionState);
-    const {tableWidth} = useRecoilValue(ScorecardTableConfigState(orgUnits));
-    const reset = useRecoilCallback(({reset}) => () => {
+    const { width: screenWidth } = useRecoilValue(ScreenDimensionState);
+    const { tableWidth } = useRecoilValue(ScorecardTableConfigState(orgUnits));
+    const reset = useRecoilCallback(({ reset }) => () => {
         reset(ScorecardDataLoadingState(orgUnits));
         dataEngine.reset(true);
     });
@@ -43,15 +47,21 @@ export default function ScorecardTable({
                     layout="fixed"
                     scrollWidth={tableWidth ?? screenWidth}
                 >
-                    <TableWidth orgUnits={orgUnits}/>
+                    <TableWidth orgUnits={orgUnits} />
                     <TableHeader
                         width={screenWidth}
                         orgUnits={orgUnits}
                         nested={nested}
                     />
-                    <TableLinearLoader orgUnits={orgUnits} dataEngine={dataEngine}/>
-                    <Suspense fallback={<TableLoader orgUnits={orgUnits}/>}>
-                        <ScorecardTableBody dataEngine={dataEngine} orgUnits={orgUnits}/>
+                    <TableLinearLoader
+                        orgUnits={orgUnits}
+                        dataEngine={dataEngine}
+                    />
+                    <Suspense fallback={<TableLoader orgUnits={orgUnits} />}>
+                        <ScorecardTableBody
+                            dataEngine={dataEngine}
+                            orgUnits={orgUnits}
+                        />
                     </Suspense>
                 </DataTable>
             </DndProvider>

@@ -1,8 +1,8 @@
 {
   "run": {
     "command": "lerna run build",
-    "startTime": "2024-03-06T07:33:10.049Z",
-    "endTime": "2024-03-06T07:34:08.725Z",
+    "startTime": "2024-03-13T08:32:09.066Z",
+    "endTime": "2024-03-13T08:33:34.042Z",
     "inner": false
   },
   "tasks": [
@@ -10,31 +10,31 @@
       "taskId": "@scorecard/shared:build",
       "target": "build",
       "projectName": "@scorecard/shared",
-      "hash": "af0c05a25e50f4f374c925968042570101652993a5496468096d74156e612b3b",
-      "startTime": "2024-03-06T07:33:10.057Z",
-      "endTime": "2024-03-06T07:33:10.071Z",
+      "hash": "8c4f3d9ae71b3598f53b46804004a755a24b488f381a75758b266ab990158cfb",
+      "startTime": "2024-03-13T08:32:09.077Z",
+      "endTime": "2024-03-13T08:32:23.507Z",
       "params": "",
-      "cacheStatus": "local-cache-hit",
-      "status": 0
-    },
-    {
-      "taskId": "widget:build",
-      "target": "build",
-      "projectName": "widget",
-      "hash": "cdb4e64c95df6efc91cc2f07d48d8fa99d90107fc94f7a53dd9ca3ee657c8636",
-      "startTime": "2024-03-06T07:33:10.073Z",
-      "endTime": "2024-03-06T07:33:10.093Z",
-      "params": "",
-      "cacheStatus": "local-cache-hit",
+      "cacheStatus": "cache-miss",
       "status": 0
     },
     {
       "taskId": "app:build",
       "target": "build",
       "projectName": "app",
-      "hash": "539747d307b9c1b1e0efeb43cebdd3f1dc89b2c9d6551a755df48304b0eabd23",
-      "startTime": "2024-03-06T07:33:10.073Z",
-      "endTime": "2024-03-06T07:34:08.724Z",
+      "hash": "fe30c4cc9e8e77f6e05405f968ef5d90d3a3b11cdc467b6c845f25b7241aa666",
+      "startTime": "2024-03-13T08:32:23.508Z",
+      "endTime": "2024-03-13T08:33:30.989Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    },
+    {
+      "taskId": "widget:build",
+      "target": "build",
+      "projectName": "widget",
+      "hash": "94104040c31d008051cfdd084de15284f6628d4a987d31f3e35f54183d00a64c",
+      "startTime": "2024-03-13T08:32:23.508Z",
+      "endTime": "2024-03-13T08:33:34.040Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0

@@ -76,7 +76,7 @@
           },
           {
             "file": "packages/shared/src/components/AlmaResponse/index.js",
-            "hash": "2931644850258860486"
+            "hash": "7731990668331235967"
           },
           {
             "file": "packages/shared/src/components/CustomForm/components/CustomField/components/CustomCheckboxField.js",
@@ -1204,7 +1204,7 @@
           },
           {
             "file": "packages/shared/src/components/ScorecardView/components/ScorecardTable/index.js",
-            "hash": "15964890999745087493"
+            "hash": "7354769967964330837"
           },
           {
             "file": "packages/shared/src/components/ScorecardView/components/ScorecardTable/scorecardTable.module.css",
@@ -1564,7 +1564,7 @@
           },
           {
             "file": "packages/shared/src/state/orgUnit.js",
-            "hash": "11826828580407620355"
+            "hash": "17172852932581957706"
           },
           {
             "file": "packages/shared/src/state/period.js",
@@ -2787,14 +2787,6 @@
             "hash": "799906439185061418"
           },
           {
-            "file": "packages/app/src/locales/en/translations.json",
-            "hash": "5949413596159749807"
-          },
-          {
-            "file": "packages/app/src/locales/fr/translations.json",
-            "hash": "9301946268568213116"
-          },
-          {
             "file": "packages/app/src/locales/index.js",
             "hash": "11975739796281719351"
           },
@@ -3169,6 +3161,14 @@
           {
             "file": "packages/app/src/print.css",
             "hash": "10976773648037138624"
+          },
+          {
+            "file": "packages/app/src/locales/en/translations.json",
+            "hash": "5949413596159749807"
+          },
+          {
+            "file": "packages/app/src/locales/fr/translations.json",
+            "hash": "9301946268568213116"
           }
         ]
       }
