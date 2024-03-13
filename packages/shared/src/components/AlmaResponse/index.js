@@ -51,28 +51,38 @@ export default function AlmaResponse() {
         <div style={{ display: "flex", flexDirection: "column", gap: "30px" }}>
             <LinearLoader width="90%" amount={percentage} />
             <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
-                <div>Progress:</div>
-                <div>{percentage.toFixed(1)}%</div>
+                <div>Upload Progress:</div>
+                <div style={{ fontWeight: "bold", color: "green" }}>
+                    {percentage.toFixed(1)}%
+                </div>
             </div>
             <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
                 <div>Total Records:</div>
-                <div>{data.total?.total}</div>
+                <div style={{ fontWeight: "bold" }}>{data.total?.total}</div>
             </div>
             <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
                 <div>Records Processed:</div>
-                <div style={{ color: "#FFBF00" }}>{data.added?.total}</div>
+                <div style={{ color: "#FFBF00", fontWeight: "bold" }}>
+                    {data.added?.total}
+                </div>
             </div>
             <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
                 <div>Records Added:</div>
-                <div style={{ color: "green" }}>{data.processed?.total}</div>
+                <div style={{ color: "green", fontWeight: "bold" }}>
+                    {data.processed?.total}
+                </div>
             </div>
             <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
                 <div>Records Failed:</div>
-                <div style={{ color: "red" }}>{data.failed?.total}</div>
+                <div style={{ color: "red", fontWeight: "bold" }}>
+                    {data.failed?.total}
+                </div>
             </div>
             <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
                 <div>Status:</div>
-                <div>{data.message?.message}</div>
+                <div style={{ color: "green", fontWeight: "bold" }}>
+                    {data.message?.message}
+                </div>
             </div>
         </div>
     );
