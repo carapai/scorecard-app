@@ -1,8 +1,8 @@
 {
   "run": {
     "command": "lerna run build",
-    "startTime": "2024-03-13T12:41:39.667Z",
-    "endTime": "2024-03-13T12:43:07.325Z",
+    "startTime": "2024-03-13T12:53:20.759Z",
+    "endTime": "2024-03-13T12:54:46.233Z",
     "inner": false
   },
   "tasks": [
@@ -10,9 +10,9 @@
       "taskId": "@scorecard/shared:build",
       "target": "build",
       "projectName": "@scorecard/shared",
-      "hash": "65f50ef4aee900e6912c433a1cc7481a71fadf6fc2e0c648dc98a0a52b085c8a",
-      "startTime": "2024-03-13T12:41:39.675Z",
-      "endTime": "2024-03-13T12:41:55.571Z",
+      "hash": "b35b8765cd46f10910e71875629748d64d5fe563c874160c5993db94228d739b",
+      "startTime": "2024-03-13T12:53:20.768Z",
+      "endTime": "2024-03-13T12:53:35.674Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0
@@ -21,9 +21,9 @@
       "taskId": "widget:build",
       "target": "build",
       "projectName": "widget",
-      "hash": "1b2791fe8f48d9522008ce21218e081303acbe4b4ecba53ca88d1a75fd20a5cb",
-      "startTime": "2024-03-13T12:41:55.573Z",
-      "endTime": "2024-03-13T12:43:05.263Z",
+      "hash": "5d7a8f3869862ff746b3d5e94c44664f9f3d330c14672a963198d88301e65d26",
+      "startTime": "2024-03-13T12:53:35.675Z",
+      "endTime": "2024-03-13T12:54:45.793Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0
@@ -32,9 +32,9 @@
       "taskId": "app:build",
       "target": "build",
       "projectName": "app",
-      "hash": "a4a9871c626396ccb37ac3f091cad5a8991298e0549b197344aaf3f47ea72294",
-      "startTime": "2024-03-13T12:41:55.573Z",
-      "endTime": "2024-03-13T12:43:07.324Z",
+      "hash": "b8a7db1e1db7dd3d01d38ac260d24e330977afbf949899821770eb183c99444a",
+      "startTime": "2024-03-13T12:53:35.675Z",
+      "endTime": "2024-03-13T12:54:46.232Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0

@@ -75,8 +75,12 @@
             ]
           },
           {
+            "file": "packages/shared/src/components/AlmaResponse/alma.css",
+            "hash": "35822334534612772"
+          },
+          {
             "file": "packages/shared/src/components/AlmaResponse/index.js",
-            "hash": "6686471182721884435"
+            "hash": "12578793850752266623"
           },
           {
             "file": "packages/shared/src/components/CustomForm/components/CustomField/components/CustomCheckboxField.js",

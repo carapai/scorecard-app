@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { LinearLoader } from "@dhis2-ui/loader";
 import { useDataEngine } from "@dhis2/app-runtime";
 
+import "./alma.css";
+
 export default function AlmaResponse() {
     const engine = useDataEngine();
     const [data, setData] = useState({});
@@ -49,7 +51,12 @@ export default function AlmaResponse() {
     };
     return (
         <div style={{ display: "flex", flexDirection: "column", gap: "30px" }}>
-            <LinearLoader width="90%" amount={percentage} />
+            <LinearLoader
+                width="90%"
+                height="30px"
+                amount={percentage}
+                className="progress"
+            />
             <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
                 <div>Progress:</div>
                 <div style={{ fontWeight: "bold", color: "green" }}>
