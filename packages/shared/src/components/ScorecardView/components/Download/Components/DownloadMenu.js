@@ -20,6 +20,7 @@ export default function DownloadMenu({ onClose, onDownload }) {
     const canSend = useRecoilValue(UserCanSed2Alma());
     const [hide, setHide] = useState(true);
     const [hideProgress, setHideProgress] = useState(true);
+    const [includeChildren, setIncludeChildren] = useState(false);
 
     const { show } = useAlert(
         ({ message }) => message,
@@ -54,6 +55,7 @@ export default function DownloadMenu({ onClose, onDownload }) {
                             pe: period.periods[0].id,
                             scorecard,
                             ou: organisationUnit.orgUnits[0].id,
+                            includeChildren,
                         }
                     );
                 } else {
@@ -110,13 +112,26 @@ export default function DownloadMenu({ onClose, onDownload }) {
             <Modal onClose={() => setHide(() => true)} medium hide={hide}>
                 <ModalTitle>Send to ALMA</ModalTitle>
                 <ModalContent>
-                    Are you sure you want send data to ALMA scorecard for
-                    organisation{" "}
-                    {organisationUnit.orgUnits.length > 0
-                        ? organisationUnit.orgUnits[0].displayName
-                        : ""}{" "}
-                    and period{" "}
-                    {period.periods.length > 0 ? period.periods[0].name : ""}
+                    <div>
+                        <input
+                            type="checkbox"
+                            checked={includeChildren}
+                            onChange={() => setIncludeChildren((prev) => !prev)}
+                        />{" "}
+                        Include children
+                    </div>
+                    <p>
+                        {" "}
+                        Are you sure you want send data to ALMA scorecard for
+                        organisation{" "}
+                        {organisationUnit.orgUnits.length > 0
+                            ? organisationUnit.orgUnits[0].displayName
+                            : ""}{" "}
+                        and period{" "}
+                        {period.periods.length > 0
+                            ? period.periods[0].name
+                            : ""}
+                    </p>
                 </ModalContent>
                 <ModalActions>
                     <ButtonStrip end>

@@ -43,8 +43,8 @@ export default function AlmaResponse() {
                 },
             });
             const current =
-                (Number(response.processed.total) * 100) /
-                Number(response.added.total);
+                (Number(response.added.total) * 100) /
+                Number(response.total.total);
             setPercentage(() => current);
             setData(() => response);
         } catch (error) {}
